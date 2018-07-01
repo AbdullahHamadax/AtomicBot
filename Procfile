@@ -1,1 +1,1 @@
-worker: python atomicbot.py
+worker:python atomicbot.py
