@@ -24,6 +24,7 @@ async def test():
 
 players = {}
 
+api = str(os.environ.get('RIOT_KEY'))
 
 async def change_status():
     await client.wait_until_ready()
@@ -37,8 +38,7 @@ async def change_status():
 @client.event
 async def on_ready():
    print("Logged in as " + client.user.name)
-
-
+     
 @client.event
 async def on_message(message):
     await client.process_commands(message)
