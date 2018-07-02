@@ -430,4 +430,4 @@ async def shutdown(ctx):
         await client.say(embed=emb)
 
 client.loop.create_task(change_status())
-client.run(os.environ{'BOT_TOKEN'])
+client.run(os.environ['BOT_TOKEN'])
