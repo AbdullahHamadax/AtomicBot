@@ -228,7 +228,7 @@ async def ping(ctx):
     t1 = time.perf_counter()
     await client.send_typing(channel)
     t2 = time.perf_counter()
-    embed = discord.Embed(title=None, description='Ping: {}'.format(round((t2-t1)*1000)), color=0x2874A6)
+    embed = discord.Embed(title=None, description='Pong: {}'.format(round((t2-t1)*1000)), color=0x2874A6)
     await client.say(embed=embed)    
     
 @client.command(pass_context=True)
@@ -238,6 +238,9 @@ async def bored(ctx):
     embed.set_image(url=random.choice(["https://media1.giphy.com/media/l2JhpjWPccQhsAMfu/giphy.gif",
                                        "https://78.media.tumblr.com/cc47aeba3534a704ef23262c7c7799a2/tumblr_omqcnxqIxV1vt16f2o1_500.gif",
                                        "https://media.tenor.com/images/fe42bcedb6118731aaf056e493556d3f/tenor.gif",
+                                       "https://i.gifer.com/9rPC.gif",
+                                       "https://i.gifer.com/BMQg.gif",
+                                       "http://jeannieruesch.com/wp-content/uploads/2015/07/bored.gif",
                                        "https://thumbs.gfycat.com/LeftEmotionalHornet-max-1mb.gif"]))
     await client.say(embed=embed)        
 
@@ -250,6 +253,20 @@ async def hug(ctx, member: discord.Member):
                                        "https://media1.tenor.com/images/506aa95bbb0a71351bcaa753eaa2a45c/tenor.gif?itemid=7552075%22",
                                        "https://i.imgur.com/BPLqSJC.gif"]))
     await client.say(embed=embed)
+
+@client.command(pass_context=True)
+async def pet(ctx, member: discord.Member):
+    author = ctx.message.author
+    embed = discord.Embed(description="**{1}**petted **{0}**".format(member.mention, author.mention), color=0x57d2cc)
+    embed.set_image(url=random.choice(["https://media1.tenor.com/images/116fe7ede5b7976920fac3bf8067d42b/tenor.gif?itemid=9200932",
+                                       "https://media.giphy.com/media/3oEdv0got9vnloXfuU/giphy.gif",
+                                       "https://media1.tenor.com/images/bf646b7164b76efe82502993ee530c78/tenor.gif?itemid=7394758",
+                                       "https://lh3.googleusercontent.com/-Nhv1fkZsmIg/VbFlxiHtIqI/AAAAAAAAAcg/z0Fe_7Wci2U/w480-h270/1372623291856.gif",
+                                       "https://i.imgur.com/sLwoifL.gif",
+                                       "https://pa1.narvii.com/5983/85777dd28aa87072ee5a9ed759ab0170b3c60992_hq.gif"]))
+    await client.say(embed=embed)
+
+  
 
 @client.command(pass_context=True)
 async def nuke(ctx, member: discord.Member):
@@ -267,6 +284,8 @@ async def kiss(ctx, member: discord.Member):
     embed.set_image(url=random.choice(["https://media.giphy.com/media/yPYvddzeuR70I/giphy.gif",
                                        "https://i.imgur.com/sGVgr74.gif",
                                        "https://media1.giphy.com/media/eWIWUjXTNiyaI/giphy.gif",
+                                       "https://media.giphy.com/media/v4JbTGe4KJjKo/giphy.gif",
+                                       "https://zippy.gfycat.com/DopeyGaseousChinesecrocodilelizard.gif",
                                        "https://media.giphy.com/media/12VXIxKaIEarL2/giphy.gif"]))
 
     await client.say(embed=embed)
