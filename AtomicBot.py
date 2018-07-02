@@ -97,10 +97,10 @@ async def help(ctx):
     )
 
     embed.add_field(name="Fun Commands", value="pizza@someone - will give user a pizza\ncookie@someone - gives user a cookie\nkill@someone - kills user\nshrug - sends shrug textface\neat@someone - eats the user\nsay -  says the same message that you  have sent\nhug@someone - hugs the user\ncalc no.+no.- calculate the result that you want\ndab - on dem haters" , inline=False)
-    embed.add_field(name="Other Commands", value="userinfo - displays userinfo\nserverinfo - gives the serverinfo\nhello - the bot will repsond to you\ncreator - displays the guy who created \ncontact - send msg to my owner :)\navatar@user - displays user avatar", inline=False)
+    embed.add_field(name="Other Commands", value="userinfo - displays userinfo\nserverinfo - gives the serverinfo\nhello - the bot will repsond to you\ncreator - displays the guy who created \ncontact - send msg to my owner :)\navatar@user - displays user avatar\nping - calculates the latenci of the server", inline=False)
     embed.add_field(name="Mod Commands", value="warn@someone - warns the user\nkick @someone - will kick the user\naddrole @user <rolename> - adds role to the Selected user\nremoverole@user <rolename> - removes the role from the Selected user", inline=False)
     embed.add_field(name="Music Commands", value="play- plays the song\nstop - stops the song\njoin - bot will join the vc your are in\nleave - bot will leave the vc your are in\npause - pauses the song\nresume - resumes the song", inline=False)
-    embed.add_field(name="funv2 Commands", value="dance - dances\nbored - why are u bored?\nkiss@someone - lovely mouths touch each Other\nslap@user - slaps like a boss", inline=False)
+    embed.add_field(name="funv2 Commands", value="dance - dances\nbored - why are u bored?\nkiss@someone - lovely mouths touch each Other\nslap@user - slaps like a boss\npet @user - pets the selected user bec. he is a good boy/girl", inline=False)
 
     await client.say(':wink: check dms:white_check_mark:')
     await client.send_message(author, embed=embed)
