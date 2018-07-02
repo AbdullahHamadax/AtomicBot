@@ -257,7 +257,7 @@ async def hug(ctx, member: discord.Member):
 @client.command(pass_context=True)
 async def pet(ctx, member: discord.Member):
     author = ctx.message.author
-    embed = discord.Embed(description="**{1}**petted **{0}**".format(member.mention, author.mention), color=0x57d2cc)
+    embed = discord.Embed(description="**{1}** pets **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://media1.tenor.com/images/116fe7ede5b7976920fac3bf8067d42b/tenor.gif?itemid=9200932",
                                        "https://media.giphy.com/media/3oEdv0got9vnloXfuU/giphy.gif",
                                        "https://media1.tenor.com/images/bf646b7164b76efe82502993ee530c78/tenor.gif?itemid=7394758",
