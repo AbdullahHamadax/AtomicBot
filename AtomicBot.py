@@ -14,7 +14,6 @@ import requests
 from itertools import cycle
 client = commands.Bot(command_prefix= ',')
 status = ["dont forget to", "do ,help", "to see all the commands :)"]
-os.chdir(r'C:\Users\abdallah\Desktop\fot')
 client.remove_command('help')
 async def test():
     print('test')
