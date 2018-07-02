@@ -173,9 +173,9 @@ async def slap(ctx, member: discord.Member):
     await client.say(embed=embed)    
 
 @client.command(pass_context=True)
-async def meme(ctx, member: discord.Member):
+async def meme(ctx):
     author = ctx.message.author
-    embed = discord.Embed(description="here is a meme for ".format(member.mention, author.mention), color=0x57d2cc)
+    embed = discord.Embed(description="here is a meme for {} ".format(author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://i.imgur.com/jb103Ml.jpg",
                                        "https://i.imgur.com/D9mDjQS.jpg",
                                        "https://i.imgur.com/xjYiIhJ.jpg",
