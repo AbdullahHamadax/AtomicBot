@@ -215,6 +215,15 @@ async def eightball(ctx):
 
 
 @client.command(pass_context=True)
+async def ping(ctx):
+    channel = ctx.message.channel
+    t1 = time.perf_counter()
+    await client.send_typing(channel)
+    t2 = time.perf_counter()
+    embed = discord.Embed(title=None, description='Ping: {}'.format(round((t2-t1)*1000)), color=0x2874A6)
+    await client.say(embed=embed)    
+    
+@client.command(pass_context=True)
 async def bored(ctx):
     author = ctx.message.author
     embed = discord.Embed(description="{} is bored ".format(author.mention), color=0x57d2cc)
