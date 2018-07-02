@@ -62,9 +62,7 @@ async def removerole(ctx, member: discord.Member, roles):
 async def on_message(message):
     await client.process_commands(message)
     if message.author == client.user:
-        return 
-    elif message.content.startswith("ping"):
-        await client.send_message(message.channel, "Pong!:ping_pong:")
+        return
     elif message.content.startswith(',kill'):
         victim = message.content.strip(",kill ")
         msg1 = '{0.author.mention} killed '.format(message)
@@ -174,7 +172,17 @@ async def slap(ctx, member: discord.Member):
                                        "https://media.giphy.com/media/jLeyZWgtwgr2U/giphy.gif"]))
     await client.say(embed=embed)    
 
+@client.command(pass_context=True)
+async def meme(ctx, member: discord.Member):
+    author = ctx.message.author
+    embed = discord.Embed(description="here is a meme for ".format(member.mention, author.mention), color=0x57d2cc)
+    embed.set_image(url=random.choice(["https://i.imgur.com/jb103Ml.jpg",
+                                       "https://i.imgur.com/D9mDjQS.jpg",
+                                       "https://i.imgur.com/xjYiIhJ.jpg",
+                                       "https://i.imgur.com/7jPw0E6.jpg"]))
+    await client.say(embed=embed)    
 
+    
 @client.command(pass_context=True)
 async def warn(ctx, member: discord.User):
     author = ctx.message.author
