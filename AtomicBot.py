@@ -11,7 +11,6 @@ import json
 import async_timeout
 import aiohttp
 import requests
-import checks
 import urllib.parse
 import urllib.request
 from itertools import cycle
