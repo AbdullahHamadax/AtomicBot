@@ -181,14 +181,7 @@ async def meme(ctx):
                                        "https://i.imgur.com/xjYiIhJ.jpg",
                                        "https://i.imgur.com/7jPw0E6.jpg"]))
     await client.say(embed=embed)    
-
  
-@client.command(pass_context=True)
-async def gm(ctx):
-    author = ctx.message.author
-    embed = discord.Embed(description="{1} gaved {0} {} dollars".format(member.mention, author.mention, random.choice)
-    
-   await client.say(random.choice, embed=embed)
 
 @client.command(pass_context=True)
 async def warn(ctx, member: discord.User):
