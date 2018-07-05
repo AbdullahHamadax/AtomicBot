@@ -173,7 +173,6 @@ async def slap(ctx, member: discord.Member):
 
 @client.command(pass_context=True)
 async def bday(ctx, member: discord.Member):
-    if ctx.message.author.id == '307236749782941707':
     author = ctx.message.author
     embed = discord.Embed(description="**{1} is saying happy bday to  **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://media.giphy.com/media/qZSOu5MoaL3q0/giphy.gif",
