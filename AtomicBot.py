@@ -135,7 +135,7 @@ async def userinfo(ctx, user: discord.Member):
 
     
 @client.command(pass_context=True)
-async def purge(ctx, amount=100)
+async def clear(ctx, amount=100)
     channel = ctx.message.channel
     messages []
     async for message in client.logs_from(channel, limit=int(amount) + 1):
