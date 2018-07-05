@@ -172,6 +172,17 @@ async def slap(ctx, member: discord.Member):
     await client.say(embed=embed)    
 
 @client.command(pass_context=True)
+async def bday(ctx, member: discord.Member):
+    author = ctx.message.author
+    embed = discord.Embed(description="**{1} is saying happy bday to  **{0}**".format(member.mention, author.mention), color=0x57d2cc)
+    embed.set_image(url=random.choice(["https://media.giphy.com/media/qZSOu5MoaL3q0/giphy.gif",
+                                       "https://media.giphy.com/media/jxTnOS8Mkv8n6/giphy.gif",
+                                       "https://media.giphy.com/media/3oEduRTWV6VB6LH8lO/giphy.gif",
+                                       "https://media.giphy.com/media/3o6Zth8dXSuSoPEQnK/giphy.gif"]))
+    await client.say(embed=embed)
+    
+    
+@client.command(pass_context=True)
 async def meme(ctx):
     author = ctx.message.author
     embed = discord.Embed(description="here is a meme for {} ".format(author.mention), color=0x57d2cc)
