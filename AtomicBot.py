@@ -132,17 +132,7 @@ async def userinfo(ctx, user: discord.Member):
     embed.add_field(name="Joined", value=user.joined_at)
     embed.set_thumbnail(url=user.avatar_url)
     await client.say(embed=embed)
-
-    
-@client.command(pass_context=True)
-async def clear(ctx, amount=100)
-    channel = ctx.message.channel
-    messages []
-    async for message in client.logs_from(channel, limit=int(amount) + 1):
-        messages.append(message)
-    await client.delete_messages(messages)
-    await client.say('Messages has been deleted.')
-         
+   
 @client.command(pass_context=True)
 async def avatar(ctx, member: discord.Member):
     author = ctx.message.author
