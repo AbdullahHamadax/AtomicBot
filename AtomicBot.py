@@ -327,7 +327,7 @@ async def kick(ctx, user: discord.User):
                    
 @client.command(pass_context=True)
 async def mute(ctx, member: discord.Member):
-     if ctx.message.author.id == '307236749782941707, 178589414379749376':
+     if ctx.message.author.id == '307236749782941707':
         role = discord.utils.get(member.server.roles, name='Muted')
         await client.add_roles(member, role)
         embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
