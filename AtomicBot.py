@@ -84,7 +84,7 @@ async def on_message(message):
     elif message.content.startswith(",shrug"):
         await client.send_message(message.channel, "¯\_(ツ)_/¯")
     elif message.content.startswith(",creator"):
-        await client.send_message(message.channel, "my creator is wolfsnepai")    
+        await client.send_message(message.channel, "my creator is wolfsenpai")    
 
 @client.command(pass_context=True)
 async def help(ctx):
