@@ -197,7 +197,7 @@ async def meme(ctx):
 async def warn(ctx, member: discord.User):
     author = ctx.message.author
     embed = discord.Embed(description="you have been warned in {} by {}".format(ctx.message.server.name, author.mention), color=0x57d2cc)
-    await client.send_message("user have been warned:white_check_mark:")
+    await client.say('user have been warned:white_check_mark:')
     await client.send_message(member, embed=embed)
 
 @client.command(pass_context=True)
