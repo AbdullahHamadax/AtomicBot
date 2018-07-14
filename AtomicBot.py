@@ -172,6 +172,16 @@ async def slap(ctx, member: discord.Member):
     await client.say(embed=embed)    
 
 @client.command(pass_context=True)
+async def tickle(ctx, member: discord.Member):
+    author = ctx.message.author
+    embed = discord.Embed(description="{1} is tickling {0}".format(member.mention, author.mention), color=0x57d2cc)
+    embed.set_image(url=random.choice(["https://thumbs.gfycat.com/UnfitFabulousIndigowingedparrot-max-1mb.gif",
+                                       "https://media.giphy.com/media/movKtLgHyHzPO/giphy.gif",
+                                       "https://orig00.deviantart.net/d4e5/f/2016/342/7/a/tickle_poke_by_otakuangelx-d9vflfu.gif",
+                                       "https://pa1.narvii.com/5797/bcd4954b360110b1e64f5d9e0e7e9864acb9f166_hq.gif"]))
+    await client.say(embed=embed)        
+    
+@client.command(pass_context=True)
 async def bday(ctx, member: discord.Member):
     author = ctx.message.author
     embed = discord.Embed(description="**{1} is saying happy bday to  **{0}**".format(member.mention, author.mention), color=0x57d2cc)
