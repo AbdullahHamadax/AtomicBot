@@ -364,9 +364,11 @@ async def kiss(ctx, member: discord.Member):
 
 @client.command(pass_context=True)
 async def listening(ctx)
-    elif ctx.message.author.id == '307236749782941707':
-         await bot.change_presence(game=discord.Game(name=mesg,type=2))
-  
+    if ctx.message.author.id == '307236749782941707':
+        await bot.change_presence(game=discord.Game(name=mesg,type=2))
+    elif ctx.message.author.id !='307236749782941707':
+        await client.say("Nope")
+        
 @client.command(pass_context=True)
 async def bloodsuck(ctx, member: discord.Member):
     author = ctx.message.author
