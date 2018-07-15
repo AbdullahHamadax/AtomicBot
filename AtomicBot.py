@@ -287,7 +287,42 @@ async def pet(ctx, member: discord.Member):
                                        "https://pa1.narvii.com/5983/85777dd28aa87072ee5a9ed759ab0170b3c60992_hq.gif"]))
     await client.say(embed=embed)
 
-  
+    
+@client.command(pass_context=True)
+async def dog(ctx):
+    """GENERATES A RANDOM PICTURE OF A DOG"""
+    try:
+        source = 'https://random.dog/'
+        page = urllib.request.urlopen(source)
+        sp = bs.BeautifulSoup(page, 'html.parser')
+        pic = sp.img
+        se = str(pic)
+        hal = se[23:-3]
+        # char=str(hal)
+        url = 'https://random.dog/{}'.format(hal)
+        # print(url)
+        if url == 'https://random.dog/':
+            # print("is a video")
+            while True:
+                src = 'https://random.dog/'
+                pg = urllib.request.urlopen(source)
+                s = bs.BeautifulSoup(pg, 'html.parser')
+                pi = s.img
+                e = str(pi)
+                ha = e[23:-3]
+                ul = 'https://random.dog/{}'.format(ha)
+                if ul != 'https://random.dog':
+                    msg=discord.Embed(title="DOG")
+                    msg.set_image(url=ul)
+                    await client.say(embed=msg)
+                    break
+        elif url != 'https://random.dog/':
+            msg=discord.Embed(title="DOG")
+            msg.set_image(url=url)
+            await client.say(embed=msg)
+
+    except:
+        await client.say("Command is currently not available.")
 
 @client.command(pass_context=True)
 async def nuke(ctx, member: discord.Member):
