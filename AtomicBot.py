@@ -318,13 +318,28 @@ async def dog(ctx):
                     await client.say(embed=msg)
                     break
         elif url != 'https://random.dog/':
-            msg=discord.Embed(title="DOG")
+            msg=discord.Embed(title="here is a dog for you :)")
             msg.set_image(url=url)
             await client.say(embed=msg)
 
     except:
         await client.say("Command is currently not available.")
 
+@client.command(pass_context=True)
+async def cat(ctx):
+    """GET A RANDOM PICTURE OF A CAT. EX: s.cat"""
+    pictures = range(1, 1600)
+    num = random.choice(pictures)
+    url = 'https://random.cat/view/{}'.format(num)
+    page = urllib.request.urlopen(url)
+    sp = bs.BeautifulSoup(page, 'html.parser')
+    pic = sp.img
+    se = str(pic)
+    img = se[26:-12]
+    msg=discord.Embed(title="here is a cat for you :)")
+    msg.set_image(url=img)
+    await client.say(embed=msg)        
+        
 @client.command(pass_context=True)
 async def nuke(ctx, member: discord.Member):
     author = ctx.message.author
