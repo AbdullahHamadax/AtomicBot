@@ -362,11 +362,12 @@ async def kiss(ctx, member: discord.Member):
     await client.say(embed=embed)
 
 @client.command(pass_context=True)
-async def listening(ctx):
+async def listening(ctx,*msg):
+    msg = " ".join(msg)
     if ctx.message.author.id == '307236749782941707':
-        await client.change_presence(game=discord.Game(name='mesg',type=2))
-    elif ctx.message.author.id !='307236749782941707':
-        await client.say("Nope")
+        await client.change_presence(game=discord.Game(name=msg, type=2))
+    elif ctx.message.author.id != '307236749782941707':
+        await client.say("Only <@307236749782941707> can change it")
         
 @client.command(pass_context=True)
 async def bloodsuck(ctx, member: discord.Member):
