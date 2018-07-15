@@ -14,7 +14,6 @@ import aiohttp
 import requests
 from itertools import cycle
 client = commands.Bot(command_prefix= ',')
-status = ["dont forget to", "do ,help", "to see all the commands :)"]
 client.remove_command('help')
 async def test():
     print('test')
@@ -365,7 +364,7 @@ async def kiss(ctx, member: discord.Member):
 @client.command(pass_context=True)
 async def listening(ctx)
     if ctx.message.author.id == '307236749782941707':
-        await bot.change_presence(game=discord.Game(name=mesg,type=2))
+        await client.change_presence(game=discord.Game(name=mesg,type=2))
     elif ctx.message.author.id !='307236749782941707':
         await client.say("Nope")
         
@@ -495,5 +494,4 @@ async def shutdown(ctx):
         emb = discord.Embed(color=13632027, title='you dont have perms sorry ')
         await client.say(embed=emb)
 
-client.loop.create_task(change_status())
 client.run(os.environ['BOT_TOKEN'])
