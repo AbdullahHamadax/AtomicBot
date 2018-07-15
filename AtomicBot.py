@@ -347,7 +347,13 @@ async def nuke(ctx, member: discord.Member):
 
     await client.say(embed=embed)
 
-
+@client.command(pass_context=True)
+async def blood(info,user:discord.Member):
+    if user.id == '307236749782941707':
+        await client.say("Can't suck bot owner blood!")
+    elif user.id != '307236749782941707' :
+        client.say("Slup")
+    
 @client.command(pass_context=True)
 async def kiss(ctx, member: discord.Member):
     author = ctx.message.author
