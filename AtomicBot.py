@@ -52,7 +52,7 @@ async def removerole(ctx, member: discord.Member, roles):
     if ctx.message.author.server_permissions.manage_roles:
         role = discord.utils.get(member.server.roles, name=roles)
         await client.remove_roles(member, role)
-        await client.say("User Has Been Assigned With Selected Role")
+        await client.say("role has been removed from the user")
         await client.say(":octagonal_sign: {} Now doesnt has".format(member.mention) + " The Role: " + roles)
     else:
         await client.say(":octagonal_sign: Permisson Too Low.")
