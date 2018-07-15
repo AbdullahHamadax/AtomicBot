@@ -348,13 +348,6 @@ async def nuke(ctx, member: discord.Member):
     await client.say(embed=embed)
 
 @client.command(pass_context=True)
-async def blood(info,user:discord.Member):
-    if user.id == '307236749782941707':
-        await client.say("Can't suck bot owner blood!")
-    elif user.id != '307236749782941707' :
-        client.say("Slup")
-    
-@client.command(pass_context=True)
 async def kiss(ctx, member: discord.Member):
     author = ctx.message.author
     embed = discord.Embed(description="**{1}** kissed **{0}**".format(member.mention, author.mention), color=0x57d2cc)
@@ -379,7 +372,7 @@ async def listening(ctx,*msg):
 async def bloodsuck(ctx, user:discord.Member):
     author=ctx.message.author
     if user.id == '307236749782941707':
-        await client.say("Can't suck <@307236749782941707>'s blood")
+        await client.say("i will not let you  suck my owner <@307236749782941707>'s blood")
     elif user.id != '307236749782941707':
         embed = discord.Embed(description="**{1}** is bloodsucking **{0}**".format(user.mention, author.mention), color=7990033)
         embed.set_image(url=random.choice(["http://gifimage.net/wp-content/uploads/2017/09/anime-vampire-bite-gif-11.gif",
