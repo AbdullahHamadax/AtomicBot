@@ -383,7 +383,7 @@ async def bloodsuck(ctx, user:discord.Member):
         await client.say("bloodsucking your self but how!!!")
     if user.id == '307236749782941707':
         await client.say("i will not let you  suck my owner <@307236749782941707>'s blood")
-    elif user.id != '307236749782941707':
+    if user.id != '307236749782941707':
         embed = discord.Embed(description="**{1}** is bloodsucking **{0}**".format(user.mention, author.mention), color=7990033)
         embed.set_image(url=random.choice(["http://gifimage.net/wp-content/uploads/2017/09/anime-vampire-bite-gif-11.gif",
                                         "https://media1.tenor.com/images/17f0fc8bc1e0d5df5f519b8cd9237ac8/tenor.gif?itemid=5384805",
