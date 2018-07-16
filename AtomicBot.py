@@ -367,7 +367,15 @@ async def listening(ctx,*msg):
         await client.change_presence(game=discord.Game(name=msg, type=2))
     elif ctx.message.author.id != '307236749782941707':
         await client.say("Only <@307236749782941707> can change it")
-        
+
+@client.command(pass_context=True)
+async def watching(ctx,*msg):
+    msg = " ".join(msg)
+    if ctx.message.author.id == '307236749782941707':
+        await client.change_presence(game=discord.Game(name=msg, type=3))
+    elif ctx.message.author.id != '307236749782941707':
+        await client.say("Only <@307236749782941707> can change make me watch") 
+
 @client.command(pass_context=True)
 async def bloodsuck(ctx, user:discord.Member):
     author=ctx.message.author
