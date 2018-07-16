@@ -379,6 +379,8 @@ async def watching(ctx,*msg):
 @client.command(pass_context=True)
 async def bloodsuck(ctx, user:discord.Member):
     author=ctx.message.author
+    if ctx.message.author.id == user.id:
+        await client.say("bloodsucking your self but how!!!")
     if user.id == '307236749782941707':
         await client.say("i will not let you  suck my owner <@307236749782941707>'s blood")
     elif user.id != '307236749782941707':
