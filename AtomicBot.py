@@ -68,11 +68,6 @@ async def on_message(message):
         msg1 = '{0.author.mention} killed '.format(message)
         msg3 = ' with a knife'.format(message)
         await client.send_message(message.channel, msg1 + victim + msg3)
-    elif message.content.startswith(',cookie'):
-        victim = message.content.strip(",cookie ")
-        msg1 = '{0.author.mention} gave '.format(message)
-        msg3 = ' a cookie:cookie:'.format(message)
-        await client.send_message(message.channel, msg1 + victim + msg3)
     elif message.content.startswith(",pizza"):
         victim = message.content.strip(",pizza ")
         msg1 = '{0.author.mention} gave '.format(message)
@@ -149,7 +144,15 @@ async def dab(ctx):
                                        "https://media.giphy.com/media/rECzMG557PSMg/giphy.gif"]))
     await client.say(embed=embed)
 
-
+@bot.command(pass_context=True)
+async def cookie(ctx, user: discord.Member):
+    amount = random.randint(1, 1000)
+    msg=discord.Embed(title='')
+    msg.add_field(name='Cookies',value=amount)
+    msg.add_field(name='From',value=ctx.message.author.mention)
+    msg.add_field(name="To",value=user.mention)
+    await client.say(embed=msg)
+    
 @client.command(pass_context=True)
 async def dance(ctx):
     author = ctx.message.author
@@ -217,6 +220,14 @@ async def contact(ctx, *, message):
     embed.add_field(name="Message", value=message)
     await client.send_message(owner, embed=embed)
     await client.say('Message Sent To WolfSenpai')
+
+@client.command(pass_context=True)
+async def dm(ctx, *, message):
+    embed = discord.Embed(title = "Message From {} ID {} In {}".format(ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
+    embed.add_field(name="Message", value=message)
+    await client.send_message(mentioned user,msg)
+    await client.say('Message Sent To the user')
+   
 
 @client.command(pass_context=True)
 async def eightball(ctx):
