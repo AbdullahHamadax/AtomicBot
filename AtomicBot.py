@@ -153,7 +153,7 @@ async def cookie(ctx, user: discord.Member):
         await client.say("only me can give my owner<@307236749782941707> cookies")
     if user.id != '307236749782941707':
         if ctx.message.author.id != user.id:
-    amount = random.randint(1, 1000)
+        amount = random.randint(1, 1000)
     msg=discord.Embed(title='')
     msg.add_field(name='Cookies',value=amount)
     msg.add_field(name='From',value=ctx.message.author.mention)
