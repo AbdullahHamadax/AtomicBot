@@ -470,24 +470,24 @@ async def everyone(ctx):
     embed.set_image(url="https://i.redd.it/pqo7cx2ooktz.png")
     await client.say(embed=embed)
 
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def join(ctx):
     channel = ctx.message.author.voice.voice_channel
-    await bot.join_voice_channel(channel)
+    await client.join_voice_channel(channel)
 
 
 
 players={}
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def play(ctx, url):
     global play_server
     play_server = ctx.message.server
-    voice = bot.voice_client_in(play_server)
+    voice = client.voice_client_in(play_server)
     global player
     player = await voice.create_ytdl_player(url)
     players[play_server.id] = player
     if player.is_live == True:
-        await bot.say("Can not play live audio yet.")
+        await client.say("Can not play live audio yet.")
     elif player.is_live == False:
         player.start()
 
@@ -495,16 +495,16 @@ async def play(ctx, url):
 async def pause(ctx):
     player.pause()
 
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def resume(ctx):
     player.resume()
           
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def volume(ctx, vol):
     vol = float(vol)
     vol = player.volume = vol
 
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def stop(ctx):
     server=ctx.message.server
     voice_client=bot.voice_client_in(server)
