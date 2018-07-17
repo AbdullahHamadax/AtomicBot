@@ -146,6 +146,9 @@ async def dab(ctx):
 
 @client.command(pass_context=True)
 async def cookie(ctx, user: discord.Member):
+    author = ctx.message.author
+    if ctx.message.author.id == user.id:
+    await client.say("hmmm giving yourself a cookie how about no")
     amount = random.randint(1, 1000)
     msg=discord.Embed(title='')
     msg.add_field(name='Cookies',value=amount)
