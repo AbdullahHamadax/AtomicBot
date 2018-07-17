@@ -250,7 +250,7 @@ async def dm(ctx, user:discord.Member,*msg):
 async def report(ctx, user:discord.Member,reason,*msg):
     embed = discord.Embed(title="you have been repoted by {} ID {} In {}".format(
         ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
-    embed.add_field(name="Message", value="{}".format(" ".join(msg)),inline=False)
+    embed.add_field(name="Message", value="{}".format(" ".join(msg)),inline=True)    
     embed.add_field(name="reason", value="{}".format(reason),inline=False)
     embed.add_field(name="report", value="requested by {}".format(ctx.message.author.name),inline=False)
     await client.send_message(user, embed=embed)
