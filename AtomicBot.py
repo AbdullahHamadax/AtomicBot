@@ -144,13 +144,13 @@ async def dab(ctx):
                                        "https://media.giphy.com/media/rECzMG557PSMg/giphy.gif"]))
     await client.say(embed=embed)
 
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def cookie(ctx, user: discord.Member,amount):
     msg = discord.Embed(title='')
     msg.add_field(name='Cookies', value=amount)
     msg.add_field(name='From', value=ctx.message.author.mention)
     msg.add_field(name="To", value=user.mention)
-    await bot.say(embed=msg)
+    await client.say(embed=msg)
     
 @client.command(pass_context=True)
 async def dance(ctx):
