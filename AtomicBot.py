@@ -251,7 +251,8 @@ async def report(ctx, user:discord.Member,*msg):
     embed = discord.Embed(title="you have been repoted by {} ID {} In {}".format(
         ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
     embed.add_field(name="Message", value="{}".format(" ".join(msg)))
-    embed.add_field(name="", value="requested by {}".format(ctx.message.author.name))
+    embed.add_field(name="reason", value="here is the reason")
+    embed.add_field(name="report", value="requested by {}".format(ctx.message.author.name))
     await client.send_message(user, embed=embed)
     await client.say('report has been sent')    
    
