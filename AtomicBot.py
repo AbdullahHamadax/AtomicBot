@@ -222,13 +222,13 @@ async def contact(ctx, *, message):
     await client.say('Message Sent To WolfSenpai')
 
 @client.command(pass_context=True)
-async def dm(ctx, *, message):
-    embed = discord.Embed(title = "Message From {} ID {} In {}".format(ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
-    embed.add_field(name="Message", value=message)
-    await client.send_message(mentioned user,msg)
+async def dm(ctx, user:discord.Member,*msg):
+    embed = discord.Embed(title="Message From {} ID {} In {}".format(
+        ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
+    embed.add_field(name="Message", value="{}".format(" ".join(msg)))
+    await client.send_message(user, embed=embed)
     await client.say('Message Sent To the user')
    
-
 @client.command(pass_context=True)
 async def eightball(ctx):
     await client.say(random.choice(["yes :8ball:",
