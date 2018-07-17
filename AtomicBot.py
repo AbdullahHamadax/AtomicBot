@@ -144,7 +144,7 @@ async def dab(ctx):
                                        "https://media.giphy.com/media/rECzMG557PSMg/giphy.gif"]))
     await client.say(embed=embed)
 
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def cookie(ctx, user: discord.Member):
     amount = random.randint(1, 1000)
     msg=discord.Embed(title='')
