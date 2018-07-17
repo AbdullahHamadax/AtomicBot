@@ -18,8 +18,26 @@ client.remove_command('help')
 async def test():
     print('test')
     ...
+    
+    
+from discord import opus
+OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll',
+             'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
 
-players = {}
+def load_opus_lib(opus_libs=OPUS_LIBS):
+    if opus.is_loaded():
+        return True
+
+    for opus_lib in opus_libs:
+            try:
+                opus.load_opus(opus_lib)
+                return
+            except OSError:
+                pass
+
+    raise RuntimeError('Could not load an opus lib. Tried %s' %
+                       (', '.join(opus_libs)))
+load_opus_lib()
 
 
 async def change_status():
@@ -452,41 +470,46 @@ async def everyone(ctx):
     embed.set_image(url="https://i.redd.it/pqo7cx2ooktz.png")
     await client.say(embed=embed)
 
-@client.command(pass_context=True)
+@bot.command(pass_context=True)
 async def join(ctx):
     channel = ctx.message.author.voice.voice_channel
-    await client.join_voice_channel(channel)
+    await bot.join_voice_channel(channel)
 
-@client.command(pass_context=True)
-async def leave(ctx):
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
+
+
+players={}
+@bot.command(pass_context=True)
+async def play(ctx, url):
+    global play_server
+    play_server = ctx.message.server
+    voice = bot.voice_client_in(play_server)
+    global player
+    player = await voice.create_ytdl_player(url)
+    players[play_server.id] = player
+    if player.is_live == True:
+        await bot.say("Can not play live audio yet.")
+    elif player.is_live == False:
+        player.start()
+
+
+async def pause(ctx):
+    player.pause()
+
+@bot.command(pass_context=True)
+async def resume(ctx):
+    player.resume()
+          
+@bot.command(pass_context=True)
+async def volume(ctx, vol):
+    vol = float(vol)
+    vol = player.volume = vol
+
+@bot.command(pass_context=True)
+async def stop(ctx):
+    server=ctx.message.server
+    voice_client=bot.voice_client_in(server)
     await voice_client.disconnect()
 
-@client.command(pass_context=True)
-async def play  (ctx, *, song):
-      opts = { 'default_search': 'auto','quiet':True, }
-      voice_client = client.voice_client_in(ctx.message.server)
-      player = await voice_client.create_ytdl_player(song, ytdl_options=opts)
-      players[ctx.message.server.id] = player
-      player.start()
-      emb = discord.Embed(color=13632027, title='Now Playing: ' + player.title )
-      await client.say(embed = emb)
-
-@client.command(pass_context=True)
-async def pause(ctx):
-    id = ctx.message.server.id
-    players[id].pause()
-
-@client.command(pass_context=True)
-async def stop(ctx):
-    id = ctx.message.server.id
-    players[id].stop()
-
-@client.command(pass_context=True)
-async def resume(ctx):
-    id = ctx.message.server.id
-    players[id].resume()
 
 @client.command()
 async def load(extension_name : str):
