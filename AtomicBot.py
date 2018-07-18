@@ -493,7 +493,7 @@ async def play(ctx, url):
     play_server = ctx.message.server
     voice = client.voice_client_in(play_server)
     global player
-    player = await voice.create_ytdl_player(url)
+    player = await voice_client.create_ytdl_player("ytsearch:" + url, after=lambda: check_queue(server.id))
     players[play_server.id] = player
     if player.is_live == True:
         await client.say("Can not play live audio yet.")
