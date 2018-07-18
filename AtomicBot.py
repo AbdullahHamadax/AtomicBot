@@ -516,7 +516,7 @@ async def volume(ctx, vol):
 @client.command(pass_context=True)
 async def stop(ctx):
     server=ctx.message.server
-    voice_client=bot.voice_client_in(server)
+    voice_client=client.voice_client_in(server)
     await voice_client.disconnect()
 
 
