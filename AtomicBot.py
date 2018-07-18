@@ -248,6 +248,10 @@ async def dm(ctx, user:discord.Member,*msg):
     
 @client.command(pass_context=True)
 async def report(ctx, user:discord.Member,reason,*msg):
+    author = ctx.message.author
+    if ctx.message.author.id == user.id:
+        await client.say("Don't try to report yourself. I see this as trolling and abuse. or maybe u are a just idiot reporting him self")
+        if ctx.message.author.id != user.id:
     embed = discord.Embed(title="you have been repoted by {} ID {} In {}".format(
         ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
     embed.add_field(name="reason", value="{}".format(reason),inline=False)
@@ -305,7 +309,7 @@ async def bored(ctx):
 @client.command(pass_context=True)
 async def scared(ctx):
     author = ctx.message.author
-    embed = discord.Embed(description="{} is scared".format(author.mention), color=7990033, title="1,2,Freedys coming for you,better hide under your bed before he comes")
+    embed = discord.Embed(field="{} is scared".format(author.mention), color=7990033, title="1,2,Freedys coming for you,better hide under your bed before he comes")
     embed.set_image(url=random.choice(["https://media.giphy.com/media/nuzkKqTxikarK/giphy.gif",
                                        "https://media.giphy.com/media/OFu6nPieMjnZS/giphy.gif",
                                        "https://i.gifer.com/5307.gif",
