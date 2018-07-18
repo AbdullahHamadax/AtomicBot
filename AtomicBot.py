@@ -392,9 +392,9 @@ async def cat(ctx):
 @client.command(pass_context=True)
 async def nuke(ctx, member: discord.Member):
     author = ctx.message.author
-     embed = discord.Embed(description="**{1}** nuked **{0}**".format(member.mention, author.mention), color=0x57d2cc)
-     embed.set_image(url="https://gifimage.net/wp-content/uploads/2017/06/nuke-gif-5.gif")
-     await client.say(embed=embed)
+    embed = discord.Embed(description="**{1}** nuked **{0}**".format(member.mention, author.mention), color=0x57d2cc)
+    embed.set_image(url="https://gifimage.net/wp-content/uploads/2017/06/nuke-gif-5.gif")
+    await client.say(embed=embed)
 
 @client.command(pass_context=True)
 async def kiss(ctx, member: discord.Member):
