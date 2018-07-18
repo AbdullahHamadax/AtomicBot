@@ -385,10 +385,9 @@ async def nuke(ctx, member: discord.Member):
         await client.say("i will not let you  nuke <@307236749782941707> he is my owner")
     if user.id != '307236749782941707':
         if ctx.message.author.id != user.id:
-    embed = discord.Embed(description="**{1}** nuked **{0}**".format(member.mention, author.mention), color=0x57d2cc)
-    embed.set_image(url="https://gifimage.net/wp-content/uploads/2017/06/nuke-gif-5.gif")
-
-    await client.say(embed=embed)
+            embed = discord.Embed(description="**{1}** nuked **{0}**".format(member.mention, author.mention), color=0x57d2cc)
+            embed.set_image(url="https://gifimage.net/wp-content/uploads/2017/06/nuke-gif-5.gif")
+            await client.say(embed=embed)
 
 @client.command(pass_context=True)
 async def kiss(ctx, member: discord.Member):
