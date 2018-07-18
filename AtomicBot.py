@@ -488,16 +488,11 @@ async def join(ctx):
 
 players={}
 @client.command(pass_context=True)
-async def play(ctx, url):
-    global play_server
-    play_server = ctx.message.server
-    voice = client.voice_client_in(play_server)
-    global player
-    player = await voice_client.create_ytdl_player("ytsearch:" + url, after=lambda: check_queue(server.id))
-    players[play_server.id] = player
-    if player.is_live == True:
-        await client.say("Can not play live audio yet.")
-    elif player.is_live == False:
+    async def play(ctx, url):
+        server = ctx.message.server
+        voice_client = client.voice_client_in(server)
+        player = await voice_client.create_ytdl_player("ytsearch:" + url, after=lambda: check_queue(server.id))
+        players[server.id] = player
         player.start()
 
 
