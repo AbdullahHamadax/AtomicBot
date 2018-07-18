@@ -317,7 +317,7 @@ async def scared(ctx):
     author = ctx.message.author
     msg=discord.Embed(title=None)
     msg.set_image(url=random.choice(img))
-    msg.add_field(name="{} is scared".format(author)))    
+    msg.add_field(name="{} is scared".format(author),value=":scream:")
     msg.set_footer(text="1, 2, Freedys coming for you, better hide under your bed before he comes".format(author))
     await client.say(embed=msg)
                                    
