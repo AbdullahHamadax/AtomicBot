@@ -308,16 +308,18 @@ async def bored(ctx):
 
 @client.command(pass_context=True)
 async def scared(ctx):
+    img = ["https://media.giphy.com/media/nuzkKqTxikarK/giphy.gif",
+           "https://media.giphy.com/media/OFu6nPieMjnZS/giphy.gif",
+           "https://i.gifer.com/5307.gif",
+           "https://s2.favim.com/orig/36/cartoon-cool-cute-gif-photography-Favim.com-297204.gif",
+           "https://i.giphy.com/xT0xeriglVvW5Fldao.gif",
+           "https://media1.giphy.com/media/Jhzvy6CFpKQvK/giphy.gif"]
     author = ctx.message.author
-    embed = discord.Embed(field="{} is scared".format(author.mention), color=7990033, title="1,2,Freedys coming for you,better hide under your bed before he comes")
-    embed.set_image(url=random.choice(["https://media.giphy.com/media/nuzkKqTxikarK/giphy.gif",
-                                       "https://media.giphy.com/media/OFu6nPieMjnZS/giphy.gif",
-                                       "https://i.gifer.com/5307.gif",
-                                       "https://s2.favim.com/orig/36/cartoon-cool-cute-gif-photography-Favim.com-297204.gif",
-                                       "https://i.giphy.com/xT0xeriglVvW5Fldao.gif",
-                                       "https://media1.giphy.com/media/Jhzvy6CFpKQvK/giphy.gif"]))
-    await client.say(embed=embed)     
-
+    msg=discord.Embed(title=None)
+    msg.set_image(url=random.choice(img))
+    msg.set_footer(text="{} is scared 1, 2, Freedys coming for you, better hide under your bed before he comes".format(author))
+    await client.say(embed=msg)
+                                   
 @client.command(pass_context=True)
 async def hug(ctx, member: discord.Member):
     author = ctx.message.author
