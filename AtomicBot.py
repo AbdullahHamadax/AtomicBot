@@ -305,7 +305,7 @@ async def bored(ctx):
 @client.command(pass_context=True)
 async def scared(ctx):
     author = ctx.message.author
-    embed = discord.Embed(description="{} is scared  ".format(author.mention), title="1,2, freedys coming for you, 3,4 run through the door.", color=0x57d2cc)
+    embed = discord.Embed(title="1,2, freedys coming for you, 3,4 run through the door.", description="{} is scared  ".format(author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://media.giphy.com/media/UZzVwDyx7Nv7a/giphy.gif",
                                        "https://media.giphy.com/media/nuzkKqTxikarK/giphy.gif",
                                        "https://media.giphy.com/media/OFu6nPieMjnZS/giphy.gif",
