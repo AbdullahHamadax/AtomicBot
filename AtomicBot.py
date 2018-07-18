@@ -312,7 +312,7 @@ async def scared(ctx):
                                        "https://i.gifer.com/5307.gif",
                                        "https://s2.favim.com/orig/36/cartoon-cool-cute-gif-photography-Favim.com-297204.gif",
                                        "https://i.giphy.com/xT0xeriglVvW5Fldao.gif",
-                                       "https://media.giphy.com/media/wliudVCUwh8ic/giphy.gif"]))
+                                       "https://media1.giphy.com/media/Jhzvy6CFpKQvK/giphy.gif"]))
     await client.say(embed=embed)     
 
 @client.command(pass_context=True)
