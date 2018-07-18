@@ -379,6 +379,12 @@ async def cat(ctx):
 @client.command(pass_context=True)
 async def nuke(ctx, member: discord.Member):
     author = ctx.message.author
+    if ctx.message.author.id == user.id:
+        await client.say("bloodsucking your self but how!!!")
+    if user.id == '307236749782941707':
+        await client.say("i will not let you  nuke <@307236749782941707> he is my owner")
+    if user.id != '307236749782941707':
+        if ctx.message.author.id != user.id:
     embed = discord.Embed(description="**{1}** nuked **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url="https://gifimage.net/wp-content/uploads/2017/06/nuke-gif-5.gif")
 
@@ -410,6 +416,7 @@ async def watching(ctx,*msg):
     msg = " ".join(msg)
     if ctx.message.author.id == '307236749782941707':
         await client.change_presence(game=discord.Game(name=msg, type=3))
+        await client.say("status has been changed :ok_hand")
     elif ctx.message.author.id != '307236749782941707':
         await client.say("Only <@307236749782941707> can change make me watch")
         
