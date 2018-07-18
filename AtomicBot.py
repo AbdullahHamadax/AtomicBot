@@ -316,8 +316,9 @@ async def scared(ctx):
            "https://media1.giphy.com/media/Jhzvy6CFpKQvK/giphy.gif"]
     author = ctx.message.author
     msg=discord.Embed(title=None)
-    msg.set_image(url=random.choice(img))
-    msg.set_footer(text="{} is scared 1, 2, Freedys coming for you, better hide under your bed before he comes".format(author))
+    msg.set_image(url=random.choice(img)){} is scared 
+    msg.add_field(text="{} is scared").format(author))
+    msg.set_footer(text="1, 2, Freedys coming for you, better hide under your bed before he comes".format(author))
     await client.say(embed=msg)
                                    
 @client.command(pass_context=True)
