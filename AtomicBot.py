@@ -303,6 +303,19 @@ async def bored(ctx):
     await client.say(embed=embed)        
 
 @client.command(pass_context=True)
+async def scared(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(description="{} is scared  ".format(author.mention), color=0x57d2cc)
+    embed.set_image(url=random.choice(["https://media.giphy.com/media/UZzVwDyx7Nv7a/giphy.gif",
+                                       "https://media.giphy.com/media/nuzkKqTxikarK/giphy.gif",
+                                       "https://media.giphy.com/media/OFu6nPieMjnZS/giphy.gif",
+                                       "https://i.gifer.com/5307.gif",
+                                       "https://s2.favim.com/orig/36/cartoon-cool-cute-gif-photography-Favim.com-297204.gif",
+                                       "https://media.giphy.com/media/xT0xeriglVvW5Fldao/giphy.giff",
+                                       "https://media.giphy.com/media/wliudVCUwh8ic/giphy.gif"]))
+    await client.say(embed=embed)     
+
+@client.command(pass_context=True)
 async def hug(ctx, member: discord.Member):
     author = ctx.message.author
     embed = discord.Embed(description="**{1}** huggged **{0}**".format(member.mention, author.mention), color=0x57d2cc)
@@ -379,15 +392,9 @@ async def cat(ctx):
 @client.command(pass_context=True)
 async def nuke(ctx, member: discord.Member):
     author = ctx.message.author
-    if ctx.message.author.id == user.id:
-        await client.say("bloodsucking your self but how!!!")
-    if user.id == '307236749782941707':
-        await client.say("i will not let you  nuke <@307236749782941707> he is my owner")
-    if user.id != '307236749782941707':
-        if ctx.message.author.id != user.id:
-            embed = discord.Embed(description="**{1}** nuked **{0}**".format(member.mention, author.mention), color=0x57d2cc)
-            embed.set_image(url="https://gifimage.net/wp-content/uploads/2017/06/nuke-gif-5.gif")
-            await client.say(embed=embed)
+     embed = discord.Embed(description="**{1}** nuked **{0}**".format(member.mention, author.mention), color=0x57d2cc)
+     embed.set_image(url="https://gifimage.net/wp-content/uploads/2017/06/nuke-gif-5.gif")
+     await client.say(embed=embed)
 
 @client.command(pass_context=True)
 async def kiss(ctx, member: discord.Member):
