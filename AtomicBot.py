@@ -32,8 +32,6 @@ async def change_listening():
         await client.change_presence(game=discord.Game(name=random_listening,type=2))
         await asyncio.sleep(6)
 
-
-
 @client.event
 async def on_ready():
     client.loop.create_task(change_watching())
