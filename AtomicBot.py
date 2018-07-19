@@ -423,6 +423,7 @@ async def listening(ctx,*msg):
     msg = " ".join(msg)
     if ctx.message.author.id == '307236749782941707':
         await client.change_presence(game=discord.Game(name=msg, type=2))
+        await client.say("status has been changed :ok_hand:")
     elif ctx.message.author.id != '307236749782941707':
         await client.say("Only <@307236749782941707> can change it")
 
@@ -431,7 +432,7 @@ async def watching(ctx,*msg):
     msg = " ".join(msg)
     if ctx.message.author.id == '307236749782941707':
         await client.change_presence(game=discord.Game(name=msg, type=3))
-        await client.say("status has been changed :ok_hand")
+        await client.say("status has been changed :ok_hand:")
     elif ctx.message.author.id != '307236749782941707':
         await client.say("Only <@307236749782941707> can change make me watch")
         
