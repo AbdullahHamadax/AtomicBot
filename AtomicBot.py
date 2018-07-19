@@ -1,6 +1,5 @@
 import discord
 import youtube_dl
-from discord import Game
 from discord.ext import commands
 import asyncio
 import time
@@ -58,15 +57,6 @@ def load_opus_lib(opus_libs=OPUS_LIBS):
                        (', '.join(opus_libs)))
 load_opus_lib()
 
-
-async def change_status():
-    await client.wait_until_ready()
-    msgs = cycle(status)
-
-    while not client.is_closed:
-        current_status = next(msgs)
-        await client.change_presence(game=discord.Game(name=current_status))
-        await asyncio.sleep(5)
 
 
 @client.command(pass_context=True)
