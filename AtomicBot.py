@@ -554,8 +554,9 @@ async def volume(ctx, vol):
 
 @client.command(pass_context=True)
 async def stop(ctx):
-    server=ctx.message.server
+    server=ctx.message.server  
     voice_client=client.voice_client_in(server)
+    await client.say('successfully left {}'.format(ctx.message.author.voice.voice_channel.name))
     await voice_client.disconnect()
 
 
