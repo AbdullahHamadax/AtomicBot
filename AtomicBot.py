@@ -25,13 +25,14 @@ async def change_watching():
         await asyncio.sleep(2)
         random_watching=random.choice(watching_list)
         await client.change_presence(game=discord.Game(name=random_watching,type=3))
-        await asyncio.sleep(3000)
+        await asyncio.sleep(6)
 
 
 
 @client.event
 async def on_ready():
     client.loop.create_task(change_watching())
+    print("Logged in as " + client.user.name)
     
 from discord import opus
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll',
