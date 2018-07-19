@@ -19,6 +19,19 @@ async def test():
     print('test')
     ...
     
+async def change_watching():
+    watching_list = ['spongebob','You','memes','coders','Anime','youtube']
+    while True:
+        await asyncio.sleep(600)
+        random_watching=random.choice(watching_list)
+        await client.change_presence(game=discord.Game(name=random_watching,type=3))
+        await asyncio.sleep(3000)
+
+
+
+@client.event
+async def on_ready():
+    client.loop.create_task(change_watching())
     
 from discord import opus
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll',
