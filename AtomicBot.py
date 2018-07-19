@@ -519,14 +519,13 @@ async def everyone(ctx):
 @client.command(pass_context=True)
 async def join(ctx):
     server = ctx.message.server
-    name = ctx.message.author.voice.voice_channel.name
     if not ctx.message.author.voice.voice_channel:
         await client.say('Sorry but you are not connected to a voice channel!')
 
     if ctx.message.author.voice.voice_channel:
         await client.join_voice_channel(ctx.message.author.voice.voice_channel)
-        await client.say('***Connected to channel {}***'.format(name))
-
+        await client.say('Connected to channel {}'.format(ctx.message.author.voice.voice_channel.name))
+        
 players={}
 @client.command(pass_context=True)
 async def play(ctx, url):
