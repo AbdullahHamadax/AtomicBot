@@ -26,12 +26,13 @@ async def change_watching():
         await asyncio.sleep(6)
 
 async def change_listening():
-    listening_list = ['spotify','You','idk','music',]
+    listening_list = ['spotify','You','my self','music',]
     while True:
-        random_listening=random.choice(listening_list)
-        await client.change_presence(game=discord.Game(name=random_listening,type=2))
         await asyncio.sleep(6)
-
+        random_listening=random.choice(listening_list)
+        await client.change_presence(game=discord.Game(name=random.choice(random_listening),type=2))
+        await asyncio.sleep(6)
+        
 @client.event
 async def on_ready():
     client.loop.create_task(change_watching())
