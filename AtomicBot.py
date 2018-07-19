@@ -200,17 +200,21 @@ async def dance(ctx):
 @client.command(pass_context=True)
 async def slap(ctx, member: discord.Member):
     author = ctx.message.author
-    embed = discord.Embed(description="{1} slapped {0}".format(member.mention, author.mention), color=0x57d2cc)
-    embed.set_image(url=random.choice(["http://gifimage.net/wp-content/uploads/2017/07/anime-slap-gif-15.gif%22,%22https://i.imgur.com/4MQkDKm.gif%22,%22https://i.gifer.com/9KyA.gif%22,%22https://media1.tenor.com/images/0720ffb69ab479d3a00f2d4ac7e0510c/tenor.gif?itemid=10422113%22,%22https://media1.tenor.com/images/448e9db420b1d7faadad508b887b2a00/tenor.gif?itemid=7602649%22,%22https://media.giphy.com/media/jLeyZWgtwgr2U/giphy.gif%22]))
     if ctx.message.author.id == user.id:
         await client.say("please tell me why would u slap yourself!")
-        embed = discord.Embed(description="{1} slapped {0}".format(member.mention, client.user.mention), color=0x57d2cc)
-        await client.say(embed=embed)
     if user.id == '307236749782941707':
         await client.say("you tried slapping my owner huh? take that now!")
     if user.id != '307236749782941707':
         if ctx.message.author.id != user.id:
-            await client.say(embed=embed)
+    embed = discord.Embed(description="{1} slapped {0}".format(member.mention, author.mention), color=0x57d2cc)
+    embed.set_image(url=random.choice(["http://gifimage.net/wp-content/uploads/2017/07/anime-slap-gif-15.gif",
+                                       "https://i.imgur.com/4MQkDKm.gif",
+                                       "https://i.gifer.com/9KyA.gif",
+                                       "https://media1.tenor.com/images/0720ffb69ab479d3a00f2d4ac7e0510c/tenor.gif?itemid=10422113",
+                                       "https://media1.tenor.com/images/448e9db420b1d7faadad508b887b2a00/tenor.gif?itemid=7602649",
+                                       "https://media.giphy.com/media/jLeyZWgtwgr2U/giphy.gif"]))
+    await client.say(embed=embed)    
+                                       
 @client.command(pass_context=True)
 async def tickle(ctx, member: discord.Member):
     author = ctx.message.author
