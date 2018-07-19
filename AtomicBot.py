@@ -99,7 +99,7 @@ async def on_message(message):
     elif message.content.startswith(",creator"):
         await client.send_message(message.channel, "my creator is wolfsenpai")  
     elif message.content.startswith(",report @yourself"):
-        await client.send_message(message.channel, "reporting your self")
+        await client.send_message(message.channel, "reporting yourself")
 
 @client.command(pass_context=True)
 async def help(ctx):
