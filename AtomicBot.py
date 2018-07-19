@@ -35,7 +35,7 @@ async def change_listening():
 @client.event
 async def on_ready():
     client.loop.create_task(change_watching())
-    client.loop.create_task(changing_listening())
+    client.loop.create_task(change_listening())
     print("Logged in as " + client.user.name)
 
 @client.event
