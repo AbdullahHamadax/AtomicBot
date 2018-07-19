@@ -22,7 +22,7 @@ async def test():
 async def change_watching():
     watching_list = ['spongebob','You','memes','coders','Anime','youtube']
     while True:
-        await asyncio.sleep(600)
+        await asyncio.sleep(2)
         random_watching=random.choice(watching_list)
         await client.change_presence(game=discord.Game(name=random_watching,type=3))
         await asyncio.sleep(3000)
