@@ -514,18 +514,18 @@ async def everyone(ctx):
     embed = discord.Embed(title="Everyone meme ", color=660000)
     embed.set_image(url="https://i.redd.it/pqo7cx2ooktz.png")
     await client.say(embed=embed)
+
+
 @client.command(pass_context=True)
-    async def join(ctx):
-        server = ctx.message.server
-        name = ctx.message.author.voice.voice_channel.name
-        if not ctx.message.author.voice.voice_channel:
-            await client.say('Sorry but you must be connected to a voice channel!')
+async def join(ctx):
+    server = ctx.message.server
+    name = ctx.message.author.voice.voice_channel.name
+    if not ctx.message.author.voice.voice_channel:
+        await client.say('Sorry but you are not connected to a voice channel!')
 
-        if ctx.message.author.voice.voice_channel:
-            await client.join_voice_channel(ctx.message.author.voice.voice_channel)
-            await client.say('***Connected to channel {}***'.format(name))
-
-
+    if ctx.message.author.voice.voice_channel:
+        await client.join_voice_channel(ctx.message.author.voice.voice_channel)
+        await client.say('***Connected to channel {}***'.format(name))
 
 players={}
 @client.command(pass_context=True)
