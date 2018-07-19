@@ -21,16 +21,23 @@ async def test():
 async def change_watching():
     watching_list = ['spongebob','You','memes','coders','Anime','youtube']
     while True:
-        await asyncio.sleep(2)
         random_watching=random.choice(watching_list)
         await client.change_presence(game=discord.Game(name=random_watching,type=3))
-        await asyncio.sleep(6)
+        await asyncio.sleep(60)
+
+async def change_listening():
+    listening_list = ['spotify','You','idk','music',]
+    while True:
+        random_listening=random.choice(listening_list)
+        await client.change_presence(game=discord.Game(name=random_listening,type=2))
+        await asyncio.sleep(60)
 
 
 
 @client.event
 async def on_ready():
     client.loop.create_task(change_watching())
+    client.loop.create_task(changing_listening())
     print("Logged in as " + client.user.name)
 
 @client.event
