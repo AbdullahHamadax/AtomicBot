@@ -200,10 +200,10 @@ async def dance(ctx):
 @client.command(pass_context=True)
 async def slap(ctx, member: discord.Member):
     author = ctx.message.author
-    if ctx.message.author.id == user.id:
-        
+    if ctx.message.author.id == user.id: 
+        await client.say("please tell me how will u slap your self")
     if user.id == '307236749782941707':
-        await client.say("i will not let you  suck my owner <@307236749782941707>'s blood")
+        await client.say("you tried slapping my owner huh?, i won't let you :)")
     if user.id != '307236749782941707':
         if ctx.message.author.id != user.id:
             embed = discord.Embed(description="{1} slapped {0}".format(member.mention, author.mention), color=0x57d2cc)
