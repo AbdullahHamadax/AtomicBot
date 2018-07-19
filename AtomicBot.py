@@ -33,6 +33,11 @@ async def change_watching():
 async def on_ready():
     client.loop.create_task(change_watching())
     print("Logged in as " + client.user.name)
+
+@client.event
+async def on_ready():
+    client.loop.create_task(change_watching())
+    print("Logged in as " + client.user.name)
     
 from discord import opus
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll',
@@ -63,9 +68,6 @@ async def change_status():
         await client.change_presence(game=discord.Game(name=current_status))
         await asyncio.sleep(5)
 
-@client.event
-async def on_ready():
-   print("Logged in as " + client.user.name)
 
 @client.command(pass_context=True)
 async def addrole(ctx, member: discord.Member, roles):
