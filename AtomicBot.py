@@ -252,7 +252,7 @@ async def dm(ctx, user:discord.Member,*msg):
 async def report(ctx, user: discord.Member, reason, *msg):
     author = ctx.message.author
     if ctx.message.author.id == user.id:
-        await client.send_message(user,"Don't try to report yourself. I see this as trolling and abuse. or maybe u are a just an idiot trying reporting him self")
+        await client.send_message(user,"Don't try to report yourself! I see this as trolling and abuse or maybe you are just an idiot reporting yourself.")
     if ctx.message.author.id != user.id:
         embed = discord.Embed(title="you have been repoted by {} ID {} In {}".format(
             ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
