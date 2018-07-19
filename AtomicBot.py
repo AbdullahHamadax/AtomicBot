@@ -66,7 +66,7 @@ load_opus_lib()
 @client.event
   async def on_member_join(member) 
     embed = discord.Embed(description="{0} welcome to {1} enjoy your stay ;)".format(member.mention, member.server.name), color=0x57d2cc)
-    await client.send_message(embed=embed)
+    await client.send_message(member, embed=embed)
 
 
 @client.command(pass_context=True)
