@@ -249,13 +249,14 @@ async def dm(ctx, user:discord.Member,*msg):
 @client.command(pass_context=True)
 async def report(ctx, user: discord.Member, reason, *msg):
     author = ctx.message.author
-       if ctx.message.author.id == user.id:
+    if ctx.message.author.id == user.id:
         await client.send_message(user,"Don't try to report yourself. I see this as trolling and abuse. or maybe u are a just idiot reporting him self")
-        if ctx.message.author.id != user.id:
+    if ctx.message.author.id != user.id:
         embed = discord.Embed(title="you have been repoted by {} ID {} In {}".format(
-        ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
+            ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
         embed.add_field(name="reason", value="{}".format(reason), inline=False)
-        embed.add_field(name="report", value="requested by {}".format(ctx.message.author.name), inline=False)
+        embed.add_field(name="report", value="requested by {}".format(
+            ctx.message.author.name), inline=False)
         await client.send_message(user, embed=embed)
         await client.say('report has been sent')
         
