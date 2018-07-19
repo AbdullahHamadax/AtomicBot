@@ -63,6 +63,10 @@ def load_opus_lib(opus_libs=OPUS_LIBS):
                        (', '.join(opus_libs)))
 load_opus_lib()
 
+@client.event
+async def on_member_join(member) 
+    embed = discord.Embed(description="{0} welcome to {1} enjoy your stay ;)".format(member.mention, member.server.name), color=0x57d2cc)
+    await client.send_message(embed=embed)
 
 
 @client.command(pass_context=True)
@@ -196,6 +200,12 @@ async def dance(ctx):
 @client.command(pass_context=True)
 async def slap(ctx, member: discord.Member):
     author = ctx.message.author
+    if ctx.message.author.id == user.id:
+        await client.say("please tell me why would u slap yourself!")
+    if user.id == '307236749782941707':
+        await client.say("you tried slapping my owner huh? i will not let you :)")
+    if user.id != '307236749782941707':
+        if ctx.message.author.id != user.id:
     embed = discord.Embed(description="{1} slapped {0}".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["http://gifimage.net/wp-content/uploads/2017/07/anime-slap-gif-15.gif",
                                        "https://i.imgur.com/4MQkDKm.gif",
