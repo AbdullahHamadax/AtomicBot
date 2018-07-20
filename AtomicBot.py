@@ -183,9 +183,35 @@ async def ftn(ctx, platform, *, player):
     duo.add_field(name="Kills Per Game:", value=DuoKPG["value"], inline=True)
     duo.add_field(name="Top 5:", value=DuoTop5["value"])
     duo.add_field(name="Top 25:", value=DuoTop25["value"])
+    
+    Squad = stats["p9"]
+    KDSquad = Squad["kd"]
+    KDSquadvalue = KDSquad["value"]
+    TRNSquadRanking = Squad["trnRating"]
+    winsDataSquad = Squad["top1"]
+    Squadscore = Squad["score"]
+    SquadKills = Squad["kills"]
+    SquadMatches = Squad["matches"]
+    SquadKPG = Squad["kpg"]
+    SquadTop5 = Squad["top5"]
+    SquadTop25 = Squad["top25"]
+
+    squad = discord.Embed(color=0x66009D)
+    squad.set_author(icon_url="https://i.ebayimg.com/images/g/6ekAAOSw3WxaO8mr/s-l300.jpg", name="Squad stats:")
+    squad.add_field(name="K/D", value=KDSquadvalue)
+    squad.add_field(name="Score", value=Squadscore["value"])
+    squad.add_field(name="Wins", value=winsDataSquad["value"])
+    squad.add_field(name="TRN Rating", value=TRNSquadRanking["value"])
+    squad.add_field(name="Kills", value=SquadKills["value"], inline=True)
+    squad.add_field(name="Matches Played:", value=SquadMatches["value"], inline=True)
+    squad.add_field(name="Kills Per Game:", value=SquadKPG["value"], inline=True)
+    squad.add_field(name="Top 5:", value=SquadTop5["value"])
+    squad.add_field(name="Top 25:", value=SquadTop25["value"])
+
    
     await client.say(embed=embed)
     await client.say(embed=duo)
+    await client.say(embed=squad)
 
 @client.command(pass_context=True)
 async def help(ctx):
