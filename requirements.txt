@@ -4,3 +4,4 @@ asyncio
 youtube_dl
 bs4 
 PyNaCl
+json
