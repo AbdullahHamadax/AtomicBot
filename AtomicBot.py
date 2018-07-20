@@ -198,7 +198,7 @@ async def dance(ctx):
     await client.say(embed=embed)    
 
 @client.command(pass_context=True)
-async def slap(ctx, member: discord.Member):
+async def slap(ctx, user: discord.Member):
     author = ctx.message.author
     if ctx.message.author.id == user.id: 
         await client.say("please tell me how will u slap your self")
@@ -206,7 +206,7 @@ async def slap(ctx, member: discord.Member):
         await client.say("you tried slapping my owner huh?, i won't let you :)")
     if user.id != '307236749782941707':
         if ctx.message.author.id != user.id:
-            embed = discord.Embed(description="{1} slapped {0}".format(member.mention, author.mention), color=0x57d2cc)
+            embed = discord.Embed(description="{1} slapped {0}".format(user.mention, author.mention), color=0x57d2cc)
             embed.set_image(url=random.choice(["http://gifimage.net/wp-content/uploads/2017/07/anime-slap-gif-15.gif",
                                        "https://i.imgur.com/4MQkDKm.gif",
                                        "https://i.gifer.com/9KyA.gif",
