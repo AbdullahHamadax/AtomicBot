@@ -125,6 +125,94 @@ async def on_message(message):
         await client.send_message(message.channel, "reporting yourself")
 
 @client.command(pass_context=True)
+@commands.cooldown(1, 30, commands.BucketType.user)
+async def ftn(ctx, platform, *, player):
+    if platform == None:
+        platform = "pc"
+    headers = {'TRN-Api-Key': '5d24cc04-926b-4922-b864-8fd68acf482e'}
+    r = requests.get('https://api.fortnitetracker.com/v1/profile/{}/{}'.format(platform, player), headers=headers)
+    stats = json.loads(r.text)
+    stats = stats["stats"]        
+    
+ #Solos
+    Solo = stats["p2"]
+    KDSolo = Solo["kd"]
+    KDSolovalue = KDSolo["value"]
+    TRNSoloRanking = Solo["trnRating"]
+    winsDataSolo = Solo["top1"]
+    Soloscore = Solo["score"]
+    SoloKills = Solo["kills"]
+    SoloMatches = Solo["matches"]
+    SoloKPG = Solo["kpg"]
+    SoloTop5 = Solo["top5"]
+    SoloTop25 = Solo["top25"]
+
+    embed = discord.Embed(color=0xffff00)
+    embed.set_author(icon_url="https://i.ebayimg.com/images/g/6ekAAOSw3WxaO8mr/s-l300.jpg", name="Solo Stats:")
+    embed.add_field(name="K/D", value=KDSolovalue)
+    embed.add_field(name="Score", value=Soloscore["value"])
+    embed.add_field(name="Wins", value=winsDataSolo["value"])
+    embed.add_field(name="TRN Rating", value=TRNSoloRanking["value"])
+    embed.add_field(name="Kills", value=SoloKills["value"], inline=True)
+    embed.add_field(name="Matches Played:", value=SoloMatches["value"], inline=True)
+    embed.add_field(name="Kills Per Game:", value=SoloKPG["value"], inline=True)
+    embed.add_field(name="Top 5:", value=SoloTop5["value"])
+    embed.add_field(name="Top 25:", value=SoloTop25["value"])
+    
+#Duos
+    Duo = stats["p10"]
+    KDDuo = Duo["kd"]
+    KDDuovalue = KDDuo["value"]
+    TRNDuoRanking = Duo["trnRating"]
+    winsDataDuo = Duo["top1"]
+    Duoscore = Duo["score"]
+    DuoKills = Duo["kills"]
+    DuoMatches = Duo["matches"]
+    DuoKPG = Duo["kpg"]
+    DuoTop5 = Duo["top5"]
+    DuoTop25 = Duo["top25"]
+
+    duo = discord.Embed(color=0xffff00)
+    duo.set_author(icon_url="https://i.ebayimg.com/images/g/6ekAAOSw3WxaO8mr/s-l300.jpg", name="Duo Stats:")
+    duo.add_field(name="K/D", value=KDDuovalue)
+    duo.add_field(name="Score", value=Duoscore["value"])
+    duo.add_field(name="Wins", value=winsDataDuo["value"])
+    duo.add_field(name="TRN Rating", value=TRNDuoRanking["value"])
+    duo.add_field(name="Kills", value=DuoKills["value"], inline=True)
+    duo.add_field(name="Matches Played:", value=DuoMatches["value"], inline=True)
+    duo.add_field(name="Kills Per Game:", value=DuoKPG["value"], inline=True)
+    duo.add_field(name="Top 5:", value=DuoTop5["value"])
+    duo.add_field(name="Top 25:", value=DuoTop25["value"])    
+  
+Squad = stats["p9"]
+    KDSquad = Squad["kd"]
+    KDSquadvalue = KDSquad["value"]
+    TRNSquadRanking = Squad["trnRating"]
+    winsDataSquad = Squad["top1"]
+    Squadscore = Squad["score"]
+    SquadKills = Squad["kills"]
+    SquadMatches = Squad["matches"]
+    SquadKPG = Squad["kpg"]
+    SquadTop5 = Squad["top5"]
+    SquadTop25 = Squad["top25"]
+
+    squad = discord.Embed(color=0xffff00)
+    squad.set_author(icon_url="https://i.ebayimg.com/images/g/6ekAAOSw3WxaO8mr/s-l300.jpg", name="Squad Stats:")
+    squad.add_field(name="K/D", value=KDSquadvalue)
+    squad.add_field(name="Score", value=Squadscore["value"])
+    squad.add_field(name="Wins", value=winsDataSquad["value"])
+    squad.add_field(name="TRN Rating", value=TRNSquadRanking["value"])
+    squad.add_field(name="Kills", value=SquadKills["value"], inline=True)
+    squad.add_field(name="Matches Played:", value=SquadMatches["value"], inline=True)
+    squad.add_field(name="Kills Per Game:", value=SquadKPG["value"], inline=True)
+    squad.add_field(name="Top 5:", value=SquadTop5["value"])
+    squad.add_field(name="Top 25:", value=SquadTop25["value"])
+
+    await client.say(embed=embed)
+    await client.say(embed=duo)
+    await client.say(embed=squad)
+
+@client.command(pass_context=True)
 async def help(ctx):
     print('test')
 
