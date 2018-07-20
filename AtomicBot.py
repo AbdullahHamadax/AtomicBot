@@ -18,31 +18,38 @@ async def test():
     print('test')
     ...
     
-async def change_watching():
-    watching_list = ['spongebob','You','memes','coders','Anime','youtube']
+#TYPE 3 = WATCHING
+async def watch():
+    #YOU CAN MAKE YOUR OWN LIST, BUT FEEL FREE TO USE MINE
+    watch_list = ['Man vs Wild', 'Supernatural', 'youtube', 'horror movies', 'You', '@everyone', 'fortnite', 'Tanime', 'cartoons']
     while True:
-        random_watching=random.choice(watching_list)
-        await client.change_presence(game=discord.Game(name=random_watching,type=3))
-        await asyncio.sleep(6)
+        await asyncio.sleep(8)
+        await client.change_presence(game=discord.Game(name=random.choice(watch_list),type=3))
 
-async def change_listening():
-    listening_list = ['spotify','You','my self','music',]
+#TYPE 2 = LISTENING
+async def listen():
+    #YOU CAN MAKE YOUR OWN LIST, BUT FEEL FREE TO USE MINE
+    listen_list = ['Alan Walker', 'you', 'idk','clock', 'Let it go:Meiko', 'spotify, my self']
     while True:
-        await asyncio.sleep(6)
-        random_listening=random.choice(listening_list)
-        await client.change_presence(game=discord.Game(name=random.choice(random_listening),type=2))
-        await asyncio.sleep(6)
-        
+        await client.change_presence(game=discord.Game(name=random.choice(listen_list), type=2))
+        await asyncio.sleep(15)
+
+
+
+
+
+#COLLECTS THE TWO FUNCTIONS INTO ONE
+async def change_status():
+    client.loop.create_task(listen())
+    client.loop.create_task(watch())
+
+
 @client.event
 async def on_ready():
-    client.loop.create_task(change_watching())
-    client.loop.create_task(change_listening())
-    print("Logged in as " + client.user.name)
+    print(client.user.name)
+    #RUN YOUR BACKGROUND TASK HERE
+    client.loop.create_task(change_status())
 
-@client.event
-async def on_ready():
-    client.loop.create_task(change_watching())
-    print("Logged in as " + client.user.name)
     
 from discord import opus
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll',
