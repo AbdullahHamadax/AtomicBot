@@ -248,11 +248,11 @@ async def urban(self, ctx, *, search: str):
     url = await http.get(f'http://api.urbandictionary.com/v0/define?term={search}', res_method="json")
 
     if url is None:
-    return await ctx.send("I think the API broke...")
+    return await client.send("I think the API broke...")
 
     count = len(url['list'])
     if count == 0:
-        return await ctx.send("Couldn't find your search in the dictionary...")
+        return await client.send("Couldn't find your search in the dictionary...")
     result = url['list'][random.randint(0, count - 1)]
 
     definition = result['definition']
@@ -267,9 +267,9 @@ async def urban(self, ctx, *, search: str):
      embed.set_footer(text=f"👍 {result['thumbs_up']} | 👎 {result['thumbs_down']}")
 
      try:
-         await ctx.send(embed=embed)
+         await client.send(embed=embed)
      except discord.Forbidden:
-        await ctx.send("I found something, but have no access to post it... [Embed permissions]")
+        await client.send("I found something, but have no access to post it... [Embed permissions]")
 
 @client.command(pass_context=True)
 async def serverinfo(ctx):
