@@ -240,7 +240,7 @@ async def say(ctx, *args):
 
 @client.command(pass_context=True)
 @commands.command(aliases=['howhot', 'hot'])
-    async def hotcalc(self, ctx, user: discord.Member = None):
+async def hotcalc(self, ctx, user: discord.Member = None):
         """ Returns a random percent for how hot is a discord user """
         if user is None:
             user = ctx.author
