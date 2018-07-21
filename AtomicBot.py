@@ -448,7 +448,7 @@ async def noticeme(ctx):
     author = ctx.message.author
     msg=discord.Embed(title=None)
     msg.set_image(url=random.choice(img))
-    msg.add_field(name="{} want senpai to notice him/here".format(author),value=":heart:")
+    msg.add_field(name="{} want senpai to notice him/her".format(author),value=":heart:")
     msg.set_footer(text="senpai come on just notice him/her".format(author))
     await client.say(embed=msg)
 
