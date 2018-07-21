@@ -4,3 +4,7 @@ asyncio
 youtube_dl
 bs4 
 PyNaCl
+colorlog
+cffi --only-binary all; sys_platform == 'win32'
+discord.py[voice] ~= 0.16.0
+pip
