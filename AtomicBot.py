@@ -441,7 +441,17 @@ async def scared(ctx):
     msg.add_field(name="{} is scared".format(author),value=":scream:")
     msg.set_footer(text="1, 2, Freedys coming for you, better hide under your bed before he comes".format(author))
     await client.say(embed=msg)
-                                   
+   
+@client.command(pass_context=True)
+async def noticeme(ctx):
+    img = ["http://gifimage.net/wp-content/uploads/2017/08/notice-me-senpai-gif-8.gif"]
+    author = ctx.message.author
+    msg=discord.Embed(title=None)
+    msg.set_image(url=random.choice(img))
+    msg.add_field(name="{} want senpai to notice him/here".format(author),value=":heart:")
+    msg.set_footer(text="senpai come on just notice him/here"..format(author))
+    await client.say(embed=msg)
+
 @client.command(pass_context=True)
 async def hug(ctx, member: discord.Member):
     author = ctx.message.author
