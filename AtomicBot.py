@@ -239,7 +239,6 @@ async def say(ctx, *args):
     return await client.say(mesg)
 
 @client.command(pass_context=True)
-@commands.command(aliases=['noticemesenpai'])
 async def noticeme(self, ctx):
     """ Notice me senpai! owo """
     if not permissions.can_upload(ctx):
