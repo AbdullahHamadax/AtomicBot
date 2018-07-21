@@ -239,15 +239,6 @@ async def say(ctx, *args):
     return await client.say(mesg)
 
 @client.command(pass_context=True)
-async def noticeme(self, ctx):
-    """ Notice me senpai! owo """
-    if not permissions.can_upload(ctx):
-        return await ctx.send("I cannot send images here ;-;")
-
-        bio = BytesIO(await http.get("https://i.alexflipnote.xyz/500ce4.gif", res_method="read"))
-        await client.send(file=discord.File(bio, filename="noticeme.gif"))
-
-@client.command(pass_context=True)
 async def serverinfo(ctx):
     embed = discord.Embed(name="{}'s info".format(ctx.message.server.name), description="Here's what I could find.", color=0x57d2cc)
     embed.set_author(name="Server Info")
