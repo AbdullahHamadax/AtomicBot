@@ -241,23 +241,23 @@ async def say(ctx, *args):
 @client.command(pass_context=True)
 @commands.command(aliases=['howhot', 'hot'])
 async def hotcalc(self, ctx, user: discord.Member = None):
-        """ Returns a random percent for how hot is a discord user """
-        if user is None:
-            user = ctx.author
+    """ Returns a random percent for how hot is a discord user """
+    if user is None:
+        user = ctx.author
 
-        random.seed(user.id)
-        r = random.randint(1, 100)
-        hot = r / 1.17
+    random.seed(user.id)
+    r = random.randint(1, 100)
+    hot = r / 1.17
 
-        emoji = "💔"
-        if hot > 25:
-            emoji = "❤"
-        if hot > 50:
-            emoji = "💖"
-        if hot > 75:
-            emoji = "💞"
+    emoji = "💔"
+    if hot > 25:
+        emoji = "❤"
+    if hot > 50:
+        emoji = "💖"
+    if hot > 75:
+        emoji = "💞"
 
-        await client.send(f"**{user.name}** is **{hot:.2f}%** hot {emoji}")
+    await client.send(f"**{user.name}** is **{hot:.2f}%** hot {emoji}")
 
 @client.command(pass_context=True)
 async def serverinfo(ctx):
