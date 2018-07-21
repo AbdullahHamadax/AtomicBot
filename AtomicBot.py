@@ -239,7 +239,6 @@ async def say(ctx, *args):
     return await client.say(mesg)
 
 @client.command(pass_context=True)
-@commands.command()
 @commands.cooldown(rate=1, per=2.0, type=commands.BucketType.user)
 async def urban(self, ctx, *, search: str):
     """ Find the 'best' definition to your words """
