@@ -261,6 +261,14 @@ async def userinfo(ctx, user: discord.Member):
     await client.say(embed=embed)
    
 @client.command(pass_context=True)
+async def urban(ctx, *, message):
+        r = requests.get("http://api.urbandictionary.com/v0/define?term={}".format(' '.join(message)))
+        r = json.loads(r.text)
+        desc = "**Definition for {}** \n\n\n{}\n{}".format(r['list'][0]['word'],r['list'][0]['definition'],r['list'][0]['permalink'])
+        embed = discord.Embed(title="Urban",description=desc, color=0xffff00)
+        await client.say(embed=embed)
+
+@client.command(pass_context=True)
 async def avatar(ctx, member: discord.Member):
     author = ctx.message.author
     embed = discord.Embed(description="lets see the avatar of {} i might put it in my pictures".format(member.mention), color=0x57d2cc)
