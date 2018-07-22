@@ -461,7 +461,10 @@ async def noticeme(ctx):
     await client.say(embed=msg)
 
 @client.command(pass_context=True)
-async def hug(ctx, member: discord.Member):
+async def hug(ctx, member: discord.Member=None):
+    if member == None:
+    #do stuff
+        return await client.say("it is ,hug@user u dumbass")
     author = ctx.message.author
     embed = discord.Embed(description="**{1}** huggged **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://cdn61.picsart.com/197337928002202.gif?r1024x1024",
