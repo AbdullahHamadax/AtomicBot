@@ -77,8 +77,11 @@ async def on_member_join(member):
 
 
 @client.command(pass_context=True)
-async def addrole(ctx, member: discord.Member, roles):
+async def addrole(ctx, member: discord.Member=None, roles):
     """Adds a role to user"""
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,addrole@user```")
     if ctx.message.author.server_permissions.manage_roles:
         role = discord.utils.get(member.server.roles, name=roles)
         await client.add_roles(member, role)
@@ -88,8 +91,11 @@ async def addrole(ctx, member: discord.Member, roles):
         await client.say(":octagonal_sign: Permisson Too Low.")
 
 @client.command(pass_context=True)
-async def removerole(ctx, member: discord.Member, roles):
+async def removerole(ctx, member: discord.Member=None, roles):
     """Adds a role to user"""
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,removerole@user```")
     if ctx.message.author.server_permissions.manage_roles:
         role = discord.utils.get(member.server.roles, name=roles)
         await client.remove_roles(member, role)
@@ -253,7 +259,10 @@ async def serverinfo(ctx):
     await client.say(embed=embed)
 
 @client.command(pass_context=True)
-async def userinfo(ctx, user: discord.Member):
+async def userinfo(ctx, user: discord.Member=None):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,userinfo@user```")
     embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I found.", color=0x57d2cc)
     embed.add_field(name="Name", value=user.name, inline=True)
     embed.add_field(name="ID", value=user.id, inline=True)
@@ -272,7 +281,10 @@ async def define(ctx, *, message):
         await client.say(embed=embed)
 
 @client.command(pass_context=True)
-async def avatar(ctx, member: discord.Member):
+async def avatar(ctx, member: discord.Member=None):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,avatar@user```")
     author = ctx.message.author
     embed = discord.Embed(description="lets see the avatar of {} i might put it in my pictures".format(member.mention), color=0x57d2cc)
     embed.set_image(url=member.avatar_url)
@@ -288,7 +300,10 @@ async def dab(ctx):
     await client.say(embed=embed)
 
 @client.command(pass_context=True)
-async def cookie(ctx, user: discord.Member,amount):
+async def cookie(ctx, user: discord.Member=None,amount):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,cookie@user```")
     msg = discord.Embed(title='')
     msg.add_field(name='Cookies', value=amount)
     msg.add_field(name='From', value=ctx.message.author.mention)
@@ -305,7 +320,10 @@ async def dance(ctx):
     await client.say(embed=embed)    
 
 @client.command(pass_context=True)
-async def slap(ctx, user: discord.Member):
+async def slap(ctx, user: discord.Member=None):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,slap@user```")
     author = ctx.message.author
     if ctx.message.author.id == user.id: 
         await client.say("please tell me how will u slap your self")
@@ -323,7 +341,10 @@ async def slap(ctx, user: discord.Member):
             await client.say(embed=embed)    
                                        
 @client.command(pass_context=True)
-async def tickle(ctx, member: discord.Member):
+async def tickle(ctx, member: discord.Member=None):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,tickle@user```")
     author = ctx.message.author
     embed = discord.Embed(description="{1} is tickling {0}".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://thumbs.gfycat.com/UnfitFabulousIndigowingedparrot-max-1mb.gif",
@@ -333,7 +354,10 @@ async def tickle(ctx, member: discord.Member):
     await client.say(embed=embed)        
     
 @client.command(pass_context=True)
-async def bday(ctx, member: discord.Member):
+async def bday(ctx, member: discord.Member=None):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,bday@user```")
     author = ctx.message.author
     embed = discord.Embed(description="**{1} is saying happy bday to  **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://media.giphy.com/media/qZSOu5MoaL3q0/giphy.gif",
@@ -345,7 +369,10 @@ async def bday(ctx, member: discord.Member):
    
 
 @client.command(pass_context=True)
-async def warn(ctx, member: discord.User):
+async def warn(ctx, member: discord.User=None):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,warn@user```")
     author = ctx.message.author
     embed = discord.Embed(description="you have been warned in {} by {}".format(ctx.message.server.name, author.mention), color=0x57d2cc)
     await client.say('user have been warned:white_check_mark:')
@@ -360,7 +387,10 @@ async def contact(ctx, *, message):
     await client.say('Message Sent To WolfSenpai')
 
 @client.command(pass_context=True)
-async def dm(ctx, user:discord.Member,*msg):
+async def dm(ctx, user:discord.Member=None,*msg):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,dm@user```")
     embed = discord.Embed(title="Message From {} ID {} In {}".format(
         ctx.message.author.name, ctx.message.author.id, ctx.message.server.name))
     embed.add_field(name="Message", value="{}".format(" ".join(msg)))
@@ -368,7 +398,10 @@ async def dm(ctx, user:discord.Member,*msg):
     await client.say('Message Sent To the user')
     
 @client.command(pass_context=True)
-async def report(ctx, user: discord.Member, reason, *msg):
+async def report(ctx, user: discord.Member=None, reason, *msg):
+     if member == None:
+    #do stuff
+        return await client.say("```usage:,report@user```")
     author = ctx.message.author
     if ctx.message.author.id == user.id:
         await client.send_message(user,"Don't try to report yourself! I see this as trolling and abuse or maybe you are just an idiot reporting yourself.")
@@ -457,7 +490,7 @@ async def noticeme(ctx):
 async def hug(ctx, member: discord.Member=None):
     if member == None:
     #do stuff
-        return await client.say("it is ,hug@user u dumbass")
+        return await client.say("```it is ,hug@user```")
     author = ctx.message.author
     embed = discord.Embed(description="**{1}** huggged **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://cdn61.picsart.com/197337928002202.gif?r1024x1024",
