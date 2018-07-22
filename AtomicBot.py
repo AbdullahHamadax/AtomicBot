@@ -312,7 +312,7 @@ async def dance(ctx):
 
 @client.command(pass_context=True)
 async def slap(ctx, user: discord.Member=None):
-    if member == None:
+    if user == None:
     #do stuff
         return await client.say("```usage:,slap@user```")
     author = ctx.message.author
