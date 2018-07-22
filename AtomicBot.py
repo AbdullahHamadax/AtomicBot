@@ -470,7 +470,7 @@ async def hug(ctx, member: discord.Member=None):
 async def pet(ctx, member: discord.Member=None):
     if member == None:
     #do stuff
-        return await client.say("```it is ,pet @user```"
+        return await client.say("```it is ,pet @user```")
     author = ctx.message.author
     embed = discord.Embed(description="**{1}** pets **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://media1.tenor.com/images/116fe7ede5b7976920fac3bf8067d42b/tenor.gif?itemid=9200932",
