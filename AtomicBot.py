@@ -379,7 +379,7 @@ async def contact(ctx, *, message):
 
 @client.command(pass_context=True)
 async def dm(ctx, user:discord.Member=None,*msg):
-    if member == None:
+    if user == None:
     #do stuff
         return await client.say("```usage:,dm@user```")
     embed = discord.Embed(title="Message From {} ID {} In {}".format(
@@ -389,7 +389,10 @@ async def dm(ctx, user:discord.Member=None,*msg):
     await client.say('Message Sent To the user')
     
 @client.command(pass_context=True)
-async def report(ctx, user: discord.Member, reason, *msg):
+async def report(ctx, user: discord.Member=None, reason, *msg):
+    if user == None:
+    #do stuff
+        return await client.say("```usage:,report@user```")
     author = ctx.message.author
     if ctx.message.author.id == user.id:
         await client.send_message(user,"Don't try to report yourself! I see this as trolling and abuse or maybe you are just an idiot reporting yourself.")
@@ -478,7 +481,7 @@ async def noticeme(ctx):
 async def hug(ctx, member: discord.Member=None):
     if member == None:
     #do stuff
-        return await client.say("```it is ,hug@user```")
+        return await client.say("```usage: ,hug@user```")
     author = ctx.message.author
     embed = discord.Embed(description="**{1}** huggged **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://cdn61.picsart.com/197337928002202.gif?r1024x1024",
@@ -491,7 +494,7 @@ async def hug(ctx, member: discord.Member=None):
 async def pet(ctx, member: discord.Member=None):
     if member == None:
     #do stuff
-        return await client.say("```it is ,pet @user```")
+        return await client.say("```usage ,pet @user```")
     author = ctx.message.author
     embed = discord.Embed(description="**{1}** pets **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url=random.choice(["https://media1.tenor.com/images/116fe7ede5b7976920fac3bf8067d42b/tenor.gif?itemid=9200932",
@@ -556,6 +559,9 @@ async def cat(ctx):
         
 @client.command(pass_context=True)
 async def nuke(ctx, member: discord.Member):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:nuke@user```")
     author = ctx.message.author
     embed = discord.Embed(description="**{1}** nuked **{0}**".format(member.mention, author.mention), color=0x57d2cc)
     embed.set_image(url="https://gifimage.net/wp-content/uploads/2017/06/nuke-gif-5.gif")
@@ -594,6 +600,9 @@ async def watching(ctx,*msg):
         
 @client.command(pass_context=True)
 async def bloodsuck(ctx, user: discord.Member):
+     if user == None:
+    #do stuff
+        return await client.say("```usage ,bloodsuck@user```")
     author = ctx.message.author
     if ctx.message.author.id == user.id:
         await client.say("bloodsucking your self but how!!!")
