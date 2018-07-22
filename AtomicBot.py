@@ -11,6 +11,7 @@ import bs4 as bs;import urllib;
 import async_timeout
 import aiohttp
 import requests
+import praw
 from itertools import cycle
 client = commands.Bot(command_prefix= ',')
 client.remove_command('help')
@@ -86,6 +87,20 @@ async def addrole(ctx, member: discord.Member, roles):
         await client.say(":white_check_mark: {} Now Has".format(member.mention) + " The Role: " + roles)
     else:
         await client.say(":octagonal_sign: Permisson Too Low.")
+
+  
+reddit = praw.Reddit(client_id='438311587322003467',
+                     client_secret='CLIENT_SECRET HERE',
+                     user_agent='atomic bot')
+
+@client.command()
+async def meme():
+    memes_submissions = reddit.subreddit('memes').hot()
+    post_to_pick = random.randint(1, 10)
+    for i in range(0, post_to_pick):
+        submission = next(x for x in memes_submissions if not x.stickied)
+
+    await client.say(submission.url)      
 
 @client.command(pass_context=True)
 async def removerole(ctx, member: discord.Member, roles):
@@ -232,6 +247,9 @@ async def help(ctx):
     await client.say(':wink: check dms:white_check_mark:')
     await client.send_message(author, embed=embed)
 
+ 
+
+    
 @client.command(pass_context=True)
 async def say(ctx, *args):
     mesg = ' '.join(args)
@@ -339,17 +357,7 @@ async def bday(ctx, member: discord.Member):
                                        "https://media.giphy.com/media/3o6Zth8dXSuSoPEQnK/giphy.gif"]))
     await client.say(embed=embed)
     
-    
-@client.command(pass_context=True)
-async def meme(ctx):
-    author = ctx.message.author
-    embed = discord.Embed(description="here is a meme for {} ".format(author.mention), color=0x57d2cc)
-    embed.set_image(url=random.choice(["https://i.imgur.com/jb103Ml.jpg",
-                                       "https://i.imgur.com/D9mDjQS.jpg",
-                                       "https://i.imgur.com/xjYiIhJ.jpg",
-                                       "https://i.imgur.com/7jPw0E6.jpg"]))
-    await client.say(embed=embed)    
- 
+   
 
 @client.command(pass_context=True)
 async def warn(ctx, member: discord.User):
