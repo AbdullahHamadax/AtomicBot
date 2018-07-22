@@ -600,9 +600,6 @@ async def watching(ctx,*msg):
         
 @client.command(pass_context=True)
 async def bloodsuck(ctx, user: discord.Member):
-     if user == None:
-    #do stuff
-        return await client.say("```usage ,bloodsuck@user```")
     author = ctx.message.author
     if ctx.message.author.id == user.id:
         await client.say("bloodsucking your self but how!!!")
