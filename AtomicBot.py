@@ -294,10 +294,7 @@ async def dab(ctx):
     await client.say(embed=embed)
 
 @client.command(pass_context=True)
-async def cookie(ctx, user: discord.Member=None,amount):
-    if member == None:
-    #do stuff
-        return await client.say("```usage:,cookie@user```")
+async def cookie(ctx, user: discord.Member,amount):
     msg = discord.Embed(title='')
     msg.add_field(name='Cookies', value=amount)
     msg.add_field(name='From', value=ctx.message.author.mention)
