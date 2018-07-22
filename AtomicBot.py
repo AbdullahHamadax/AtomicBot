@@ -77,11 +77,8 @@ async def on_member_join(member):
 
 
 @client.command(pass_context=True)
-async def addrole(ctx, member: discord.Member=None, roles):
+async def addrole(ctx, member: discord.Member, roles):
     """Adds a role to user"""
-    if member == None:
-    #do stuff
-        return await client.say("```usage:,addrole@user```")
     if ctx.message.author.server_permissions.manage_roles:
         role = discord.utils.get(member.server.roles, name=roles)
         await client.add_roles(member, role)
@@ -91,11 +88,8 @@ async def addrole(ctx, member: discord.Member=None, roles):
         await client.say(":octagonal_sign: Permisson Too Low.")
 
 @client.command(pass_context=True)
-async def removerole(ctx, member: discord.Member=None, roles):
+async def removerole(ctx, member: discord.Member, roles):
     """Adds a role to user"""
-    if member == None:
-    #do stuff
-        return await client.say("```usage:,removerole@user```")
     if ctx.message.author.server_permissions.manage_roles:
         role = discord.utils.get(member.server.roles, name=roles)
         await client.remove_roles(member, role)
