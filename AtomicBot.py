@@ -398,10 +398,7 @@ async def dm(ctx, user:discord.Member=None,*msg):
     await client.say('Message Sent To the user')
     
 @client.command(pass_context=True)
-async def report(ctx, user: discord.Member=None, reason, *msg):
-     if member == None:
-     #do stuff
-         return await client.say("```usage:,report@user```")
+async def report(ctx, user: discord.Member, reason, *msg):
     author = ctx.message.author
     if ctx.message.author.id == user.id:
         await client.send_message(user,"Don't try to report yourself! I see this as trolling and abuse or maybe you are just an idiot reporting yourself.")
