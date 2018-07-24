@@ -75,7 +75,7 @@ async def on_member_join(member):
     embed=discord.Embed(title="Welcome!", description="Welcome {0} to {1}. enjoy your stay :)".format(member.mention, member.server.name), color=0xff00f6)
     await client.send_message(member, embed=embed)
 
-@client.event
+#@client.event
 async def on_command_error(ctx, error):
     if isinstance(ctx, discord.ext.commands.errors.CommandNotFound):
         embed = discord.Embed(title="Error:",
