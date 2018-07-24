@@ -79,7 +79,7 @@ async def on_member_join(member):
 async def on_command_error(ctx, error):
     if isinstance(ctx, discord.ext.commands.errors.CommandNotFound):
         embed = discord.Embed(title="Error:",
-                              description="Damm it! I cant find that! Try `!help`.",
+                              description="sorry i couldn't find that command try doing `,help`.",
                               colour=0xe73c24)
         await client.send_message(error.message.channel, embed=embed)
     else:
