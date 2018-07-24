@@ -276,10 +276,10 @@ async def userinfo(ctx, user: discord.Member):
     embed.add_field(name=":desktop:ID", value=user.id, inline=True)
     embed.add_field(name=":satellite:Status", value=user.status, inline=True)
     embed.add_field(name=":ballot_box_with_check:Highest role", value=user.top_role,)
-    embed.add_field(name=":star2:Joined", value=user.joined_at, inline=True))
+    embed.add_field(name=":star2:Joined", value=user.joined_at, inline=True)
     embed.add_field(name=':video_game: Playing:', value=user.game, inline=True)
     embed.add_field(name=":robot:Is Bot:", value=user.bot)
-    embed.add_field(name=":date:Created account:", value=user.created_at, inline=True))
+    embed.add_field(name=":date:Created account:", value=user.created_at, inline=True)
     embed.set_thumbnail(url=user.avatar_url)
     await client.say(embed=embed)
 
