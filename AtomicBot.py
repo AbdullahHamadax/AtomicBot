@@ -265,15 +265,17 @@ async def userinfo(ctx, user: discord.Member=None):
     if member == None:
     #do stuff
         return await client.say("```usage:,userinfo@user```")
-    embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I found.", color=0x57d2cc)
-    embed.add_field(name="Name:", value=user.name, inline=True)
-    embed.add_field(name="ID:", value=user.id, inline=True)
-    embed.add_field(name="Status:", value=user.status, inline=True)
-    embed.add_field(name="Highest role:", value=user.top_role,)
-    embed.add_field(name="Joined:", value=user.joined_at, inline=True)
-    embed.add_field(name="Account Creation:", value=user.created_at, inline=True)
     embed.set_thumbnail(url=user.avatar_url)
+    embed.add_field(name="Name:", value=user.name, inline=True)
+    embed.add_field(name="Status:", value=user.status, inline=True)
+    embed.add_field(name="User ID:", value=user.id, inline=True)
+    embed.add_field(name="User Highest role:", value=user.top_role.mention, inline=True)
+    embed.add_field(name="Discriminator:", value=user.discriminator, inline=True)
+    embed.add_field(name="Playing:", value=user.game, inline=True)
+    embed.add_field(name="Joined", value=user.joined_at, inline=True)
+    embed.add_field(name="Account Creation:", value=user.created_at, inline=True)
     await client.say(embed=embed)
+
  
 @client.command(pass_context=True)
 async def create_role(ctx, *, name):
