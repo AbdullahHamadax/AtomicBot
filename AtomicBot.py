@@ -106,7 +106,16 @@ async def removerole(ctx, member: discord.Member, roles):
     else:
         await client.say(":octagonal_sign: Permisson Too Low.")
 
-
+@client.command(pass_context=True)
+async def all_servers(ctx):
+    if ctx.message.author.server_permissions.administrator:
+        embed = discord.Embed(title="All servers", description="lists all servers the bot is in.", color=0x008000)
+        tmp = 1
+        for i in client.servers:
+            embed.add_field(name=str(tmp), value=i.name, inline=False)
+            tmp += 1
+        await client.say(embed=embed)
+        
 @client.event
 async def on_message(message):
     await client.process_commands(message)
@@ -262,22 +271,34 @@ async def serverinfo(ctx):
 
 @client.command(pass_context=True)
 async def info(ctx, user: discord.Member=None):
-    if user == None:
-    #do stuff
-        return await client.say("```usage:,info@user```")
-    embed = discord.Embed(color=0x008000)
-    embed.set_author(name=ctx.message.author.display_name)
-    embed.add_field(name=":desktop:ID:", value=ctx.message.author.id, inline=True)
-    embed.add_field(name=":satellite:Status:", value=ctx.message.author.status, inline=True)
-    embed.add_field(name=":star2:Joined server::", value=ctx.message.author.joined_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
-    embed.add_field(name=":date:Created account:", value=ctx.message.author.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
-    embed.add_field(name=":bust_in_silhouette:Nickname:", value=user.display_name)
-    embed.add_field(name=":robot:Is Bot:", value=user.bot)
-    embed.add_field(name=':ballot_box_with_check: Top role:', value=ctx.message.author.top_role.name, inline=True)
-    embed.add_field(name=':video_game: Playing:', value=ctx.message.author.game, inline=True)
-    embed.set_thumbnail(url=ctx.message.author.avatar_url)
-    await asyncio.sleep(0.3)
-    await client.say(embed=embed)
+    if user is None:
+        embed = discord.Embed(color=0x008000)
+        embed.set_author(name=ctx.message.author.display_name)
+        embed.add_field(name=":desktop:ID:", value=ctx.message.author.id, inline=True)
+        embed.add_field(name=":satellite:Status:", value=ctx.message.author.status, inline=True)
+        embed.add_field(name=":star2:Joined server::", value=ctx.message.author.joined_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":date:Created account:", value=ctx.message.author.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":bust_in_silhouette:Nickname:", value=user.display_name)
+        embed.add_field(name=":robot:Is Bot:", value=user.bot)
+        embed.add_field(name=':ballot_box_with_check: Top role:', value=ctx.message.author.top_role.name, inline=True)
+        embed.add_field(name=':video_game: Playing:', value=ctx.message.author.game, inline=True)
+        embed.set_thumbnail(url=ctx.message.author.avatar_url)
+        await asyncio.sleep(0.3)
+        await client.say(embed=embed)
+    else:
+        embed = discord.Embed(color=0x008000)
+        embed.set_author(name=ctx.message.author.display_name)
+        embed.add_field(name=":desktop:ID:", value=ctx.message.author.id, inline=True)
+        embed.add_field(name=":satellite:Status:", value=ctx.message.author.status, inline=True)
+        embed.add_field(name=":star2:Joined server::", value=ctx.message.author.joined_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":date:Created account:", value=ctx.message.author.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":bust_in_silhouette:Nickname:", value=user.display_name)
+        embed.add_field(name=":robot:Is Bot:", value=user.bot)
+        embed.add_field(name=':ballot_box_with_check: Top role:', value=ctx.message.author.top_role.name, inline=True)
+        embed.add_field(name=':video_game: Playing:', value=ctx.message.author.game, inline=True)
+        embed.set_thumbnail(url=ctx.message.author.avatar_url)
+        await asyncio.sleep(0.3)
+        await client.say(embed=embed)
 
 @client.command(pass_context=True)
 async def create_role(ctx, *, name):
