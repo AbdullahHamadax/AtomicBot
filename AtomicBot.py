@@ -261,22 +261,24 @@ async def serverinfo(ctx):
     await client.say(embed=embed)
 
 @client.command(pass_context=True)
-async def userinfo(ctx, user: discord.Member=None):
+async def info(ctx, user: discord.Member=None):
     if user == None:
     #do stuff
-        return await client.say("```usage:,userinfo@user```")
-    embed.set_thumbnail(url=user.avatar_url)
-    embed.add_field(name="Name:", value=user.name, inline=True)
-    embed.add_field(name="Status:", value=user.status, inline=True)
-    embed.add_field(name="User ID:", value=user.id, inline=True)
-    embed.add_field(name="User Highest role:", value=user.top_role.mention, inline=True)
-    embed.add_field(name="Discriminator:", value=user.discriminator, inline=True)
-    embed.add_field(name="Playing:", value=user.game, inline=True)
-    embed.add_field(name="Joined", value=user.joined_at, inline=True)
-    embed.add_field(name="Account Creation:", value=user.created_at, inline=True)
+        return await client.say("```usage:,info@user```")
+    embed = discord.Embed(color=0x008000)
+    embed.set_author(name=ctx.message.author.display_name)
+    embed.add_field(name=":desktop:ID:", value=ctx.message.author.id, inline=True)
+    embed.add_field(name=":satellite:Status:", value=ctx.message.author.status, inline=True)
+    embed.add_field(name=":star2:Joined server::", value=ctx.message.author.joined_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+    embed.add_field(name=":date:Created account:", value=ctx.message.author.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+    embed.add_field(name=":bust_in_silhouette:Nickname:", value=user.display_name)
+    embed.add_field(name=":robot:Is Bot:", value=user.bot)
+    embed.add_field(name=':ballot_box_with_check: Top role:', value=ctx.message.author.top_role.name, inline=True)
+    embed.add_field(name=':video_game: Playing:', value=ctx.message.author.game, inline=True)
+    embed.set_thumbnail(url=ctx.message.author.avatar_url)
+    await asyncio.sleep(0.3)
     await client.say(embed=embed)
 
- 
 @client.command(pass_context=True)
 async def create_role(ctx, *, name):
     if ctx.message.author.id == '307236749782941707' or ctx.message.author.server_permissions.administrator:
@@ -322,6 +324,9 @@ async def dab(ctx):
 
 @client.command(pass_context=True)
 async def cookie(ctx, user: discord.Member,amount):
+    if member == None:
+    #do stuff
+        return await client.say("```usage:,avatar@user```")
     msg = discord.Embed(title='')
     msg.add_field(name='Cookies', value=amount)
     msg.add_field(name='From', value=ctx.message.author.mention)
