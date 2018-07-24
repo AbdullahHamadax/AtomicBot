@@ -262,7 +262,7 @@ async def serverinfo(ctx):
 
 @client.command(pass_context=True)
 async def userinfo(ctx, user: discord.Member=None):
-    if member == None:
+    if user == None:
     #do stuff
         return await client.say("```usage:,userinfo@user```")
     embed.set_thumbnail(url=user.avatar_url)
