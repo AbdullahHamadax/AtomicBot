@@ -270,21 +270,18 @@ async def serverinfo(ctx):
     await client.say(embed=embed)
 
 @client.command(pass_context=True)
-async def info(ctx, user: discord.Member=None):
-    if user is None:
-        embed = discord.Embed(color=0x008000)
-        embed.set_author(name=ctx.message.author.display_name)
-        embed.add_field(name=":desktop:ID:", value=ctx.message.user.id, inline=True)
-        embed.add_field(name=":satellite:Status:", value=ctx.message.user.status, inline=True)
-        embed.add_field(name=":star2:Joined server::", value=ctx.message.user.joined_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
-        embed.add_field(name=":date:Created account:", value=ctx.message.user.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
-        embed.add_field(name=":bust_in_silhouette:Nickname:", value=user.display_name)
-        embed.add_field(name=":robot:Is Bot:", value=user.bot)
-        embed.add_field(name=':ballot_box_with_check: Top role:', value=ctx.message.user.top_role.name, inline=True)
-        embed.add_field(name=':video_game: Playing:', value=ctx.message.user.game, inline=True)
-        embed.set_thumbnail(url=ctx.message.author.avatar_url)
-        await asyncio.sleep(0.3)
-        await client.say(embed=embed)
+async def userinfo(ctx, user: discord.Member):
+    embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I found.", color=0x008000)
+    embed.add_field(name=":bust_in_silhouette:Name", value=user.name, inline=True)
+    embed.add_field(name=":desktop:ID", value=user.id, inline=True)
+    embed.add_field(name=":satellite:Status", value=user.status, inline=True)
+    embed.add_field(name=":ballot_box_with_check:Highest role", value=user.top_role,)
+    embed.add_field(name=":star2:Joined", value=user.joined_at)
+    embed.add_field(name=':video_game: Playing:', value=user.game, inline=True)
+    embed.add_field(name=":robot:Is Bot:", value=user.bot)
+    embed.set_thumbnail(url=user.avatar_url)
+    await client.say(embed=embed)
+
     else:
         embed = discord.Embed(color=0x008000)
         embed.set_author(name=ctx.message.author.display_name)
