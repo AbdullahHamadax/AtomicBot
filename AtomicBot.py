@@ -79,11 +79,10 @@ async def on_member_join(member):
 async def on_command_error(ctx, error):
     if isinstance(ctx, discord.ext.commands.errors.CommandNotFound):
         embed = discord.Embed(title="Error:",
-                              description="sorry i couldn't find that command try doing `,help`.",
+                              description="sorry i couldnt find that command try doing `,help`.",
                               colour=0xe73c24)
         await client.send_message(error.message.channel, embed=embed)
     
-  
 @client.command(pass_context=True)
 async def addrole(ctx, member: discord.Member, roles):
     """Adds a role to user"""
