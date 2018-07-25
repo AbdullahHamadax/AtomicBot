@@ -114,6 +114,13 @@ async def all_servers(ctx):
             embed.add_field(name=str(tmp), value=i.name, inline=False)
             tmp += 1
         await client.say(embed=embed)
+
+@client.command(pass_context=True)
+async def ami(ctx,*, role):
+    if role in [role.name for role in ctx.message.author.roles]:
+        await client.say("Yes")
+    else:
+        await client.say("No")        
         
 @client.event
 async def on_message(message):
