@@ -29,7 +29,7 @@ async def watch():
 #TYPE 2 = LISTENING
 async def listen():
     #YOU CAN MAKE YOUR OWN LIST, BUT FEEL FREE TO USE MINE
-    listen_list = ['Alan Walker', 'you', 'idk','clock', 'Let it go:Meiko', 'spotify, my self']
+    listen_list = ['Alan Walker', 'you', 'idk','cool musics', 'spotify', 'my self']
     while True:
         await client.change_presence(game=discord.Game(name=random.choice(listen_list), type=2))
         await asyncio.sleep(15)
@@ -75,7 +75,7 @@ async def on_member_join(member):
     embed=discord.Embed(title="Welcome!", description="Welcome {0} to {1}. enjoy your stay :)".format(member.mention, member.server.name), color=0xff00f6)
     await client.send_message(member, embed=embed)
 
-#@client.event
+@client.event
 async def on_command_error(ctx, error):
     if isinstance(ctx, discord.ext.commands.errors.CommandNotFound):
         embed = discord.Embed(title="Error:",
@@ -96,7 +96,7 @@ async def addrole(ctx, member: discord.Member, roles):
 
 @client.command(pass_context=True)
 async def removerole(ctx, member: discord.Member, roles):
-    """Adds a role to user"""
+    """removes a role from the user"""
     if ctx.message.author.server_permissions.manage_roles:
         role = discord.utils.get(member.server.roles, name=roles)
         await client.remove_roles(member, role)
@@ -104,16 +104,6 @@ async def removerole(ctx, member: discord.Member, roles):
         await client.say(":octagonal_sign: {} Now doesnt has".format(member.mention) + " The Role: " + roles)
     else:
         await client.say(":octagonal_sign: Permisson Too Low.")
-
-@client.command(pass_context=True)
-async def all_servers(ctx):
-    if ctx.message.author.server_permissions.administrator:
-        embed = discord.Embed(title="All servers", description="lists all servers the bot is in.", color=0x008000)
-        tmp = 1
-        for i in client.servers:
-            embed.add_field(name=str(tmp), value=i.name, inline=False)
-            tmp += 1
-        await client.say(embed=embed)
 
 @client.command(pass_context=True)
 async def ami(ctx,*, role):
@@ -334,7 +324,7 @@ async def dab(ctx):
 
 @client.command(pass_context=True)
 async def cookie(ctx, user: discord.Member,amount):
-    if member == None:
+    if user == None:
     #do stuff
         return await client.say("```usage:,avatar@user```")
     msg = discord.Embed(title='')
@@ -420,7 +410,7 @@ async def contact(ctx, *, message):
     await client.say('Message Sent To WolfSenpai')
 
 @client.command(pass_context=True)
-async def dm(ctx, user:discord.Member=None,*msg):
+async def dm(ctx, user: discord.Member=None,*msg):
     if user == None:
     #do stuff
         return await client.say("```usage:,dm@user```")
