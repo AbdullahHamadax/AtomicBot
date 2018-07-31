@@ -117,16 +117,6 @@ async def on_message(message):
     await client.process_commands(message)
     if message.author == client.user:
         return
-    elif message.content.startswith(',kill'):
-        victim = message.content.strip(",kill ")
-        msg1 = '{0.author.mention} killed '.format(message)
-        msg3 = ' with a knife'.format(message)
-        await client.send_message(message.channel, msg1 + victim + msg3)
-    elif message.content.startswith(",pizza"):
-        victim = message.content.strip(",pizza ")
-        msg1 = '{0.author.mention} gave '.format(message)
-        msg3 = ' slice of :pizza: enjoy it '.format(message)
-        await client.send_message(message.channel, msg1 + victim + msg3)
     if message.content.startswith(',hello'):
         msg = 'Hello {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)  
