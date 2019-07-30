@@ -755,4 +755,4 @@ async def shutdown(ctx):
         emb = discord.Embed(color=13632027, title='you dont have perms sorry ')
         await client.say(embed=emb)
 
-client.run(os.environ['wYbW4HMjY8qVuT0c0YjqUHkPRFotRsWY'])
+client.run(os.environ['BOT_TOKEN'])
